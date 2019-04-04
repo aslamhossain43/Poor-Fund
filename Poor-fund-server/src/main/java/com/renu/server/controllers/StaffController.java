@@ -29,7 +29,7 @@ import com.renu.server.repositories.StaffRepository;
 @RestController
 public class StaffController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(StaffController.class);
-	private static final String ABS_PATH_FOR_DEVELOPERS_IMAGES = "H:\\NodeJS_Github\\Poor-fund-App\\Poor-fund-App\\src\\assets\\staff-images\\";
+	private static final String ABS_PATH_FOR_DEVELOPERS_IMAGES = "\\poor-fund-images\\";
 	@Autowired
 	StaffRepository staffRepository;
 	private String sCode = null;
