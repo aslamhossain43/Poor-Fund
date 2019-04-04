@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+        <p id="headingP">Last Year Not Granted List Is Given Below</p><hr>  
+        
+        <div class="row">
+              <div *ngFor="let lyngl of lastYearNotGrantedList">
+              <div *ngIf="lyngl.status===notGranted" class=" col-sm-4  col-md-4 col-lg-4">
+                  
+                  <div class="thumbnail">
+                      <p>Apply Date : {{lyngl.createdDate}}</p>
+                      <p>Candidate<span class="caret"></span></p>
+                    <img src="assets/client-images/{{lyngl.piCode}}.jpg">
+                    <p>Application<span class="caret"></span></p>
+                    <img src="assets/client-images/{{lyngl.apiCode}}.jpg">
+                      
+                      <div class="caption">
+                          <p>Details Address<span class="caret"></span></p>
+                         <p>Name : {{lyngl.name}}</p>
+                         <p>Country : {{lyngl.country}}</p>
+                         <p>Zela : {{lyngl.zela}}</p>
+                         <p>Upozela : {{lyngl.upozela}}</p>
+                         <p>Union : {{lyngl.union}}</p>
+                         <p>Work : {{lyngl.work}}</p>
+                         <p>Contact : {{lyngl.contact}}</p>
+                         <p>bKash : {{lyngl.bkash}}</p>
+                         <p>Not Granted Date : {{lyngl.lastModifiedDate}}</p>
+                         <img *ngIf="lyngl.status===notGranted" id="notGranyedImg" src="assets/images/not-granted.svg">
+                        
+                      </div>
+
+                  </div>
+                  </div>
+              </div>
+             
+          </div>
+      </div>
+  </div>
+</div>

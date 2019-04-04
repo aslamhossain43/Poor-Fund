@@ -1,0 +1,42 @@
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+        <p id="headingP">Current Year Granted List Is Given Bellow
+          </p>
+          <hr>
+        <div class="row">
+              <div *ngFor="let cygl of currentYearGrantedList">
+                   <div *ngIf="cygl.prCode && cygl.status===granted" class=" col-sm-4  col-md-4 col-lg-4">
+                  
+                  <div class="thumbnail">
+                      <p>Apply Date : {{cygl.createdDate}}</p>
+                      <p>Candidate<span class="caret"></span></p>
+                    <img src="assets/client-images/{{cygl.piCode}}.jpg">
+                    <p>Application<span class="caret"></span></p>
+                    <img src="assets/client-images/{{cygl.apiCode}}.jpg">
+                      
+                      <div class="caption">
+                          <p>Details Address<span class="caret"></span></p>
+                         <p>Name : {{cygl.name}}</p>
+                         <p>Country : {{cygl.country}}</p>
+                         <p>Zela : {{cygl.zela}}</p>
+                         <p>Upozela : {{cygl.upozela}}</p>
+                         <p>Union : {{cygl.union}}</p>
+                         <p>Work : {{cygl.work}}</p>
+                         <p>Contact : {{cygl.contact}}</p>
+                         <p>bKash : {{cygl.bkash}}</p>
+                         <p>Granted Date : {{cygl.lastModifiedDate}}</p>
+                         <img *ngIf="cygl.prCode && cygl.status===granted" id="provedImg" src="assets/images/granted.jpg">
+                         <img *ngIf="cygl.prCode && cygl.status===granted" id="provedImg" src="assets/granted-images/{{cygl.prCode}}.jpg">
+                      
+                      </div>
+
+                  </div>
+                  </div>
+                 
+              </div>
+             
+          </div>
+      </div>
+  </div>
+</div>

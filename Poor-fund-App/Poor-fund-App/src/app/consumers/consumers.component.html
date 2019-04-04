@@ -1,0 +1,157 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+      <mat-progress-bar *ngIf="!msg" mode="indeterminate"></mat-progress-bar>
+      <br>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+     
+      <form class="form" name="biodataForm" [formGroup]="biodataForm">
+        <div>
+          <p id="headingP">(1)Upload your image(2)Upload an application image in a single page
+            and signature of
+            your union's chairman and member both.
+          </p>
+          <hr>
+        </div>
+        <input type="hidden" name="consumer.id">
+        <div id="fileSelectButton" class="btn btn-primary">
+          <input type="file" required [formControl]="selectedPiFileControl" (change)="selectpiFile($event)"
+           [(ngModel)]="consumer.selectedPiFile">
+        </div>
+        <br><br>
+        <div id="fileSelectButton" class="btn btn-primary">
+          <input type="file" required [formControl]="selectedPiFileControl" (change)="selectapiFile($event)"
+            [(ngModel)]="consumer.selectedApiFile">
+        </div>
+        <br><br>
+        <div class="formDiv">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Name" required type="text" minlength="3" maxlength="30" autocomplete="off"
+              [(ngModel)]="consumer.name" [formControl]="nameFormControl">
+            <mat-error *ngIf="nameFormControl.invalid">{{getRequiredErrorMessageForString('name')}}</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Country" required type="text" minlength="3" maxlength="30" autocomplete="off"
+              [(ngModel)]="consumer.country" [formControl]="countryFormControl">
+            <mat-error *ngIf="countryFormControl.invalid">{{getRequiredErrorMessageForString('country')}}</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Zela" required type="text" minlength="3" maxlength="30" autocomplete="off"
+              [(ngModel)]="consumer.zela" [formControl]="zelaFormControl">
+            <mat-error *ngIf="zelaFormControl.invalid">{{getRequiredErrorMessageForString('zela')}}</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Upozela" required type="text" minlength="3" maxlength="30" autocomplete="off"
+              [(ngModel)]="consumer.upozela" [formControl]="upozelaFormControl">
+            <mat-error *ngIf="upozelaFormControl.invalid">{{getRequiredErrorMessageForString('upozela')}}</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Union" required type="text" minlength="3" maxlength="30" autocomplete="off"
+              [(ngModel)]="consumer.union" [formControl]="unionFormControl">
+            <mat-error *ngIf="unionFormControl.invalid">{{getRequiredErrorMessageForString('union')}}</mat-error>
+          </mat-form-field>
+          <br>
+
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Work" required type="text" minlength="3" maxlength="30" autocomplete="off"
+              [(ngModel)]="consumer.work" [formControl]="workFormControl">
+            <mat-error *ngIf="workFormControl.invalid">{{getRequiredErrorMessageForString('work')}}</mat-error>
+          </mat-form-field>
+          <br>
+
+          <mat-form-field id="contactBkashtoright" class="full-width">
+            <input matInput placeholder="Contact" required type="number" autocomplete="off" [(ngModel)]="consumer.contact"
+              [formControl]="contactFormControl">
+            <mat-error *ngIf="contactFormControl.invalid">{{getRequiredErrorMessageForNumber('contact')}}</mat-error>
+          </mat-form-field>
+          <br>
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="BKash" required type="number" autocomplete="off" [(ngModel)]="consumer.bkash"
+              [formControl]="bkashFormControl">
+            <mat-error *ngIf="bkashFormControl.invalid">{{getRequiredErrorMessageForNumber('bkash')}}</mat-error>
+          </mat-form-field>
+        </div>
+
+        <br>
+        <button id="submitButton" mat-raised-button color="primary" class="submit-button"
+         
+         [disabled]="!(selectedpiFiles && selectedapiFiles && consumer.name
+        && consumer.country && consumer.zela && consumer.upozela &&
+        consumer.union && consumer.work && consumer.contact &&
+        consumer.bkash)"
+          (click)="uploadFile()">submit</button>
+      </form>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+<hr>
+<div class="container">
+<div class="row">
+
+    <div *ngFor="let c of consumers">
+        <div *ngIf="!c.status" class=" col-sm-4  col-md-4 col-lg-4">
+            
+            <div class="thumbnail">
+                <p>Apply Date : {{c.lastModifiedDate}}</p>
+                <p>ID : {{c.id}}</p>
+                <p>Candidate<span class="caret"></span></p>
+              <img src="assets/client-images/{{c.piCode}}.jpg">
+              <p>Application<span class="caret"></span></p>
+              <img src="assets/client-images/{{c.apiCode}}.jpg">
+                
+                <div class="caption">
+                    <p>Details Address<span class="caret"></span></p>
+                   <p>Name : {{c.name}}</p>
+                   <p>Country : {{c.country}}</p>
+                   <p>Zela : {{c.zela}}</p>
+                   <p>Upozela : {{c.upozela}}</p>
+                   <p>Union : {{c.union}}</p>
+                   <p>Work : {{c.work}}</p>
+                   <p>Contact : {{c.contact}}</p>
+                   <p>bKash : {{c.bkash}}</p>
+                   <button *ngIf="c.uid === uid"  id="EDIT" type="button" class="btn btn-primary" 
+                   (click)="getCandidateById(c.id)">EDIT</button>
+                   <button *ngIf="c.uid === uid"  id="DELETE" type="button" class="btn btn-primary" 
+                   (click)="openModal(template)">DELETE</button>
+                   </div>
+           </div>
+    
+    
+    
+            </div>
+
+            <ng-template #template>
+                <div class="modal-header">
+                    <h4 class="modal-title">Notice confirm modal carefully </h4>
+                   
+                </div>
+                <div class="modal-body">
+                    Do you want to delete id : {{c.id}} ?
+                </div>
+                <div class="modal-footer">
+                  <button id="deleteBtn" class="btn btn-primary" (click)="deleteCandidate(c.id)" (click)="modalRef.hide()">Confirm</button>
+                  <button id="closeBtn" class="btn btn-primary" (click)="modalRef.hide()">Close</button>
+                  
+              </div>
+            </ng-template>
+    </div>
+    
+</div>
+</div>

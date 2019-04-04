@@ -1,0 +1,44 @@
+.thumbnail{
+    width: 100%;
+    height: auto;
+    margin-top: 15%;
+}
+#headingP{
+    text-align: center;
+    font-size: 18px;
+   width: 100%;
+  }
+p{
+    text-align: center;
+}
+h2{
+    text-align: center;
+}
+button{
+    width: 100%;
+    text-align: center;
+}
+#deleteBtn{
+    margin-left: 0%;
+    width: 49%;
+    text-align: center;
+}
+#closeBtn{
+    margin-left: 0%;
+    width: 49%;
+    text-align: center;
+}
+.modal-body{
+    text-align: center;
+    font-size: 18px;
+    color: red;
+}
+.modal-header{
+    background: orange;
+}
+.modal-footer{
+    background: rgb(40, 96,144);
+}
+.modal-title{
+    text-align: center;
+}

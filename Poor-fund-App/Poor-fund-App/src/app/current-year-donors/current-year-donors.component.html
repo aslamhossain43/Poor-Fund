@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row">
+   <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+    <p id="headingP">Current Year Involved Donors List Is Given Below</p><hr>
+    <div class="row">
+      <div *ngFor="let cytd of currentYearTotalDonors">
+      <div  class=" col-sm-4  col-md-4 col-lg-4">
+          
+          <div class="thumbnail">
+              <p>Involved Date : {{cytd.createdDate}}</p>
+              
+              <div class="caption">
+                  <p>Details Address<span class="caret"></span></p>
+                 <p>Donor name : {{cytd.donorsName}}</p>
+                 <p>Country : {{cytd.country}}</p>
+                 <p>City : {{cytd.city}}</p>
+                 
+              </div>
+
+          </div>
+          </div>
+      </div>
+     
+  </div>
+   </div>
+  </div>
+</div>

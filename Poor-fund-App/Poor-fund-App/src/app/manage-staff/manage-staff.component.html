@@ -1,0 +1,90 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+      <mat-progress-bar *ngIf="msg" mode="indeterminate"></mat-progress-bar>
+      <br>
+    
+      <form class="form" name="biodataForm" [formGroup]="biodataForm">
+        <div>
+          <p id="headingP">Add Staffs involved In Your Website
+          </p>
+        </div>
+        <input type="hidden" name="staff.id">
+        <input type="hidden" name="staff.createdDate">
+       <br>
+        <div id="fileSelectButton" class="btn btn-primary">
+          <input type="file" required [formControl]="selectedSFileControl" (change)="selectSFile($event)"
+            [(ngModel)]="staff.sfile">
+        </div>
+        <br><br>
+       
+        <div class="formDiv">
+        <mat-form-field>
+          <input matInput placeholder="Name" required type="text" autocomplete="off"
+            [(ngModel)]="staff.name" [formControl]="staffNameFormControl">
+          <mat-error *ngIf="staffNameFormControl.invalid">{{getRequiredErrorMessage('name')}}</mat-error>
+        </mat-form-field>
+        </div>
+        <br>
+        <div class="formDiv">
+          <mat-form-field>
+            <input matInput placeholder="Job" required type="text" autocomplete="off"
+              [(ngModel)]="staff.job" [formControl]="staffJobFormControl">
+            <mat-error *ngIf="staffJobFormControl.invalid">{{getRequiredErrorMessage('job')}}</mat-error>
+          </mat-form-field>
+          </div>
+          <br>
+          <div class="formDiv">
+            <mat-form-field>
+              <input matInput placeholder="Details" required type="text" autocomplete="off"
+                [(ngModel)]="staff.details" [formControl]="staffDetailsFormControl">
+              <mat-error *ngIf="staffDetailsFormControl.invalid">{{getRequiredErrorMessage('details')}}</mat-error>
+            </mat-form-field>
+            </div>
+            <br>
+        <button id="submitButton" mat-raised-button color="primary" class="submit-button"
+         [disabled]="!( staff.sfile && staff.name && staff.job && staff.details)"
+          (click)="addStaff()">submit</button>
+      </form>
+     <hr>
+     
+ <div *ngFor="let s of staffs">
+  <div  class=" col-sm-4  col-md-4 col-lg-4">
+      
+      <div class="thumbnail">
+          <p>Involved Date : {{s.createdDate}}</p>
+          <p>ID : {{s.id}}</p>
+        <img src="assets/staff-images/{{s.staffCode}}.jpg">
+          <div class="caption">
+             <p>Name : {{s.name}}</p>
+             <p>Job : {{s.job}}</p>
+             <p>Details : {{s.details}}</p>
+             <button id="EDIT" type="button" class="btn btn-primary" 
+             (click)="getStaffById(s.id)">EDIT</button>
+             <button   id="DELETE" type="button" class="btn btn-primary" 
+             (click)="openModal(template)">DELETE</button>
+             </div>
+
+      </div>
+      </div>
+      <ng-template #template>
+        <div class="modal-header">
+            <h4 class="modal-title">Notice confirm modal carefully </h4>
+           
+        </div>
+        <div class="modal-body">
+            Do you want to delete id : {{s.id}} ?
+        </div>
+        <div class="modal-footer">
+          <button id="deleteBtn" class="btn btn-primary" (click)="deleteStaff(s.id)" (click)="modalRef.hide()">Confirm</button>
+          <button id="closeBtn" class="btn btn-primary" (click)="modalRef.hide()">Close</button>
+          
+      </div>
+    </ng-template>
+  </div>
+
+
+    </div>
+  </div>
+</div>

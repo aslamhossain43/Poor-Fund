@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div class="row">
+   <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+   <p id="headingP">Total Donors List Is Given Below</p><hr>
+    <div class="row">
+      <div *ngFor="let td of totalDonors">
+      <div  class=" col-sm-4  col-md-4 col-lg-4">
+          
+          <div class="thumbnail">
+              <p>Involved Date : {{td.createdDate}}</p>
+              
+              <div class="caption">
+                  <p>Details Address<span class="caret"></span></p>
+                 <p>Donor name : {{td.donorsName}}</p>
+                 <p>Country : {{td.country}}</p>
+                 <p>City : {{td.city}}</p>
+                 
+              </div>
+
+          </div>
+          </div>
+      </div>
+     
+  </div>
+   </div>
+  </div>
+</div>

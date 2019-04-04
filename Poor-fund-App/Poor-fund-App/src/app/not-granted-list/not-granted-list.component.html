@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+        <p id="headingP">Total Not Granted List Is Given Bellow
+        </p>
+        <hr>
+      
+        <div class="row">
+              <div *ngFor="let ngl of notGrantedList">
+              <div *ngIf="ngl.status===notGranted" class=" col-sm-4  col-md-4 col-lg-4">
+                  
+                  <div class="thumbnail">
+                      <p>Apply Date : {{ngl.createdDate}}</p>
+                      <p>Candidate<span class="caret"></span></p>
+                    <img src="assets/client-images/{{ngl.piCode}}.jpg">
+                    <p>Application<span class="caret"></span></p>
+                    <img src="assets/client-images/{{ngl.apiCode}}.jpg">
+                      
+                      <div class="caption">
+                          <p>Details Address<span class="caret"></span></p>
+                         <p>Name : {{ngl.name}}</p>
+                         <p>Country : {{ngl.country}}</p>
+                         <p>Zela : {{ngl.zela}}</p>
+                         <p>Upozela : {{ngl.upozela}}</p>
+                         <p>Union : {{ngl.union}}</p>
+                         <p>Work : {{ngl.work}}</p>
+                         <p>Contact : {{ngl.contact}}</p>
+                         <p>bKash : {{ngl.bkash}}</p>
+                         <p>Not Granted Date : {{ngl.lastModifiedDate}}</p>
+                         <img *ngIf="ngl.status===notGranted" id="notGranyedImg" src="assets/images/not-granted.svg">
+                        
+                      </div>
+
+                  </div>
+                  </div>
+              </div>
+             
+          </div>
+      </div>
+  </div>
+</div>

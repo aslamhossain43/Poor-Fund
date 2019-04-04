@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <br>
+    <p id="headingP">Manage All Candidates </p>
+<hr>
+
+
+
+
+ <div *ngFor="let c of allCandidates">
+                <div class=" col-sm-4  col-md-4 col-lg-4">
+                    
+                    <div class="thumbnail">
+                        <p>Apply Date : {{c.lastModifiedDate}}</p>
+                        <p>ID : {{c.id}}</p>
+                        <p>Candidate<span class="caret"></span></p>
+                      <img src="assets/client-images/{{c.piCode}}.jpg">
+                      <p>Application<span class="caret"></span></p>
+                      <img src="assets/client-images/{{c.apiCode}}.jpg">
+                        
+                        <div class="caption">
+                            <p>Details Address<span class="caret"></span></p>
+                           <p>Name : {{c.name}}</p>
+                           <p>Country : {{c.country}}</p>
+                           <p>Zela : {{c.zela}}</p>
+                           <p>Upozela : {{c.upozela}}</p>
+                           <p>Union : {{c.union}}</p>
+                           <p>Work : {{c.work}}</p>
+                           <p>Contact : {{c.contact}}</p>
+                           <p>bKash : {{c.bkash}}</p>
+                           <button type="button" class="btn btn-primary" 
+                           (click)="openModal(template)">DELETE</button>
+                           </div>
+                   </div>
+
+
+
+                    </div>
+
+
+
+                   
+            
+            <ng-template #template>
+                <div class="modal-header">
+                    <h4 class="modal-title">Notice confirm modal carefully </h4>
+                   
+                </div>
+                <div class="modal-body">
+                    Do you want to delete id : {{c.id}} ?
+                </div>
+                <div class="modal-footer">
+                  <button id="deleteBtn" class="btn btn-primary" (click)="deleteCandidate(c.id)" (click)="modalRef.hide()">Confirm</button>
+                  <button id="closeBtn" class="btn btn-primary" (click)="modalRef.hide()">Close</button>
+                  
+              </div>
+            </ng-template>
+
+
+                </div>
+
+
+
+
+    </div>
+  </div>
+</div>

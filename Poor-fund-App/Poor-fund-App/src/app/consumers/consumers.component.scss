@@ -1,0 +1,88 @@
+
+// FOR NG MATERIAL 
+// form field
+.container-fluid {
+  padding:1.2em;
+  margin-top: 2%;
+ margin-bottom: 1%;
+  width:50%;
+  margin-left:25%;
+  height:100%;
+}
+
+.formDiv {
+  display: flex;
+  flex-direction: column;
+}
+
+.formDiv > * {
+  width: 100%;
+}
+
+#fileSelectButton{
+  width: 100%;
+padding: 2%;
+}
+
+#headingP{
+  font-size: 10px;
+ width: 100%;
+}
+#submitButton{
+  margin-left: 42%;
+}
+#matCardMessage {
+text-align: center;
+font-size: 20px;
+}
+input{
+  text-align: center;
+}
+// FOR DATA
+
+  //FOR CANDIDATES
+  .thumbnail{
+    width: 100%;
+    height: auto;
+    margin-top: 15%;
+}
+p{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+}
+#EDIT{
+  width: 50%;
+  text-align: center;
+
+}
+#DELETE{
+  width: 50%;
+  text-align: center;
+}
+#deleteBtn{
+    margin-left: 0%;
+    width: 49%;
+    text-align: center;
+}
+#closeBtn{
+    margin-left: 0%;
+    width: 49%;
+    text-align: center;
+}
+.modal-body{
+    text-align: center;
+    font-size: 18px;
+    color: red;
+}
+.modal-header{
+    background: orange;
+}
+.modal-footer{
+    background: rgb(40, 96,144);
+}
+.modal-title{
+    text-align: center;
+}
