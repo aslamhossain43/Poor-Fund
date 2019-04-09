@@ -24,8 +24,8 @@ import com.renu.server.repositories.CustomersRepository;
 @RestController
 public class ManageCandidatesController {
 private static final Logger LOGGER=LoggerFactory.getLogger(ManageCandidatesController.class);
-private static final String ABS_PATH ="\\poor-fund-images\\"; 
-private static final String ABS_PATH_FOR_GRANTED_NOT_GRANTED = "\\poor-fund-images\\";
+private static final String ABS_PATH ="/poor-fund-images/"; 
+private static final String ABS_PATH_FOR_GRANTED_NOT_GRANTED = "/poor-fund-images/";
 
 @Autowired
 CustomersRepository consumersRepository;
