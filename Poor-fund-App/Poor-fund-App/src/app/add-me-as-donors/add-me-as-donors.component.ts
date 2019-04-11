@@ -25,7 +25,7 @@ nameFormControl = new FormControl('', [Validators.required, Validators.minLength
     donorsName: this.nameFormControl,
     country: this.countryFormControl,
     city: this.cityFormControl,
-    contact: this.contactFormControl,
+    contact: this.contactFormControl
   });
 
   // FOR STRING VALIDATION

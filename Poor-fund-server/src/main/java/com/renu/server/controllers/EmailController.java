@@ -46,6 +46,7 @@ public class EmailController {
 		return ResponseEntity.ok().body("Email is sending");
 
 	}
+	
 
 	@Async
 	private void sendMailAsynchronously(MimeMessage message) {
