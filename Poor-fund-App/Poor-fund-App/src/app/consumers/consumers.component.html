@@ -13,9 +13,9 @@
      
       <form class="form" name="biodataForm" [formGroup]="biodataForm">
         <div>
-          <p id="headingP">(1)Upload your image(2)Upload an application image in a single page
+          <p id="headingP">(1)Upload applicant's image(2)Upload an application's image in a single page
             and signature of
-            your union's chairman and member both.
+            your department's Dean .
           </p>
           <hr>
         </div>
@@ -38,7 +38,7 @@
           </mat-form-field>
           <br>
           <mat-form-field class="full-width">
-            <input matInput placeholder="Country" required type="text" minlength="3" maxlength="30" autocomplete="off"
+            <input matInput placeholder="University" required type="text" minlength="3" maxlength="30" autocomplete="off"
               [(ngModel)]="consumer.country" [formControl]="countryFormControl">
             <mat-error *ngIf="countryFormControl.invalid">{{getRequiredErrorMessageForString('country')}}</mat-error>
           </mat-form-field>
@@ -119,7 +119,7 @@
                 <div class="caption">
                     <p>Details Address<span class="caret"></span></p>
                    <p>Name : {{c.name}}</p>
-                   <p>Country : {{c.country}}</p>
+                   <p>University : {{c.country}}</p>
                    <p>Zela : {{c.zela}}</p>
                    <p>Upozela : {{c.upozela}}</p>
                    <p>Union : {{c.union}}</p>

@@ -6,7 +6,6 @@ import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.service';
 import { ModuleWithProviders } from '@angular/core';
 import { EmailComponent } from './email/email.component';
-import { ViewCandidatesComponent } from './view-candidates/view-candidates.component';
 import { GrantedListComponent } from './granted-list/granted-list.component';
 import { NotGrantedListComponent } from './not-granted-list/not-granted-list.component';
 import { GrantingInformationComponent } from './granting-information/granting-information.component';
@@ -52,7 +51,6 @@ export const router: Routes = [
   { path: 'currentYearNotGrantedList', component: CurrentYearNotGrantedListComponent },
   { path: 'lastYearNotGrantedList', component: LastYearNotGrantedListComponent },
   { path: 'notGrantedList', component: NotGrantedListComponent },
-  { path: 'view-candidates', component: ViewCandidatesComponent },
   { path: 'manage-grant', component: ManageGrantedListComponent},
   { path: 'manage-notGrant', component: ManageNotGrantedListComponent},
   { path: 'manage-candidates', component: ManageCandidatesComponent},
@@ -62,6 +60,5 @@ export const router: Routes = [
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);
-
 
 

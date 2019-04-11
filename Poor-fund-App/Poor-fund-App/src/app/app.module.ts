@@ -25,8 +25,6 @@ import { ConsumerService } from './consumers/consumers.consumer-service';
 // FOR MATERIAL
 import 'hammerjs';
 import { NgMaterialModule } from './app.material';
-import { ViewCandidatesComponent } from './view-candidates/view-candidates.component';
-import { ViewCandidateService } from './view-candidates/view-candidates.service';
 import { GrantedListComponent } from './granted-list/granted-list.component';
 import { NotGrantedListComponent } from './not-granted-list/not-granted-list.component';
 import { GrantingInformationComponent } from './granting-information/granting-information.component';
@@ -75,7 +73,6 @@ import { StaffDirectoryService } from './staff-directory/staff-directory.service
     LoginComponent,
     SignupComponent,
     EmailComponent,
-    ViewCandidatesComponent,
     ManageGrantedListComponent,
     GrantedListComponent,
     NotGrantedListComponent,
@@ -119,8 +116,7 @@ import { StaffDirectoryService } from './staff-directory/staff-directory.service
     // FOR NGX BOOTSTRAP MODULE
      NgxBootstrapModule
   ],
-  providers: [AuthGuard, AngularFireAuth, UploadFileService, ConsumerService, ViewCandidateService
-  , ManageGrantedService, GrantedListService, NotGrantedListService, ManageNotGrantedListService,
+  providers: [AuthGuard, AngularFireAuth, UploadFileService, ConsumerService, ManageGrantedService, GrantedListService, NotGrantedListService, ManageNotGrantedListService,
 DonorService, TotalDonorService, LastYaerTotalDonorService, CurrentYaerTotalDonorService,
 LastYearGrantedListService, CurrentYearGrantedListService, LastYearNotGrantedListService
 , CurrentYearNotGrantedListService, ManageCandidatesService, ManageDonorService, ManageStaffService,

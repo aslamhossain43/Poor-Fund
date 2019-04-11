@@ -1,6 +1,5 @@
 package com.renu.server.controllers;
 
-
 import java.io.File;
 import java.util.List;
 import java.util.UUID;
@@ -22,7 +21,6 @@ import com.renu.server.fileupload.FileUpload;
 import com.renu.server.models.Staff;
 import com.renu.server.repositories.StaffRepository;
 
-
 @RequestMapping(value = "/staff")
 @RestController
 public class StaffController {
@@ -37,7 +35,7 @@ public class StaffController {
 	@PostMapping(value = "/addStaff")
 	public ResponseEntity<?> addStaff(@RequestParam("sfile") MultipartFile sfile, @RequestParam("name") String name,
 			@RequestParam("job") String job, @RequestParam("details") String details, @RequestParam("id") String id,
-			@RequestParam("createdDate")String createdDate) {
+			@RequestParam("createdDate") String createdDate) {
 		// CONVERT STRING TO LONG
 		if (!id.equalsIgnoreCase("undefined")) {
 

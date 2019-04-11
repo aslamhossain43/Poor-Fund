@@ -13,8 +13,7 @@ import { fromLeft } from '../router.animations';
 
 })
 export class ManageNotGrantedListComponent implements OnInit {
-// FOR MESSAGE
-msg = '';
+
 
 // FOR MODEL
 notGrant = new NotGrant();
