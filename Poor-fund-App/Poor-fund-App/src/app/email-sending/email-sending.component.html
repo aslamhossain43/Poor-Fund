@@ -36,20 +36,13 @@
           </mat-form-field>
          
 
-          <mat-form-field class="full-width">
-            <input matInput placeholder="From" required type="email" autocomplete="off"
-             [(ngModel)]="email.from"
-              [formControl]="emailFormControl">
-            <mat-error *ngIf="emailFormControl.invalid">{{getRequiredErrorMessageForString('from')}}</mat-error>
-          </mat-form-field>
-          
 
         </div>
 
         <br>
         <button id="submitButton" mat-raised-button color="primary" class="submit-button"
          [disabled]="!(email.to
-        && email.subject && email.message && email.from)"
+        && email.subject && email.message)"
           (click)="sendingEmail()">Send</button>
       </form>
 

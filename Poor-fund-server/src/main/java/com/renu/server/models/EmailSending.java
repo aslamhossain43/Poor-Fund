@@ -10,7 +10,6 @@ public class EmailSending extends TimeSetting<Long> {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String to;
-	private String from;
 	private String subject;
 	private String message;
 
@@ -30,13 +29,7 @@ public class EmailSending extends TimeSetting<Long> {
 		this.to = to;
 	}
 
-	public String getFrom() {
-		return from;
-	}
-
-	public void setFrom(String from) {
-		this.from = from;
-	}
+	
 
 	public String getMessage() {
 		return message;

@@ -18,13 +18,11 @@ emails: Email[];
   toFormControl = new FormControl('', [Validators.required]);
   subjectFormControl = new FormControl('', [Validators.required]);
   messageFormControl = new FormControl('', [Validators.required]);
-  fromFormControl = new FormControl('', [Validators.required]);
-
+  
   biodataForm: FormGroup = new FormGroup({
     to: this.toFormControl,
     subject: this.subjectFormControl,
-    message: this.messageFormControl,
-    from: this.fromFormControl
+    message: this.messageFormControl
   });
 
 

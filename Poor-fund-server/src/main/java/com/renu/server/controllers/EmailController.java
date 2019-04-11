@@ -37,7 +37,6 @@ public class EmailController {
 
 		helper.setTo(emailSending.getTo());
 		helper.setSubject(emailSending.getSubject());
-		helper.setFrom(emailSending.getFrom());
 		helper.setText(emailSending.getMessage());
 		sendMailAsynchronously(message);
 
