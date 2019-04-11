@@ -64,6 +64,8 @@ import { DevelopersComponent } from './developers/developers.component';
 import { HistoryOfBangladeshComponent } from './history-of-bangladesh/history-of-bangladesh.component';
 import { ManageStaffService } from './manage-staff/manage-staff.service';
 import { StaffDirectoryService } from './staff-directory/staff-directory.service';
+import { EmailSendingComponent } from './email-sending/email-sending.component';
+import { EmailSendingService } from './email-sending/email-sending.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,7 +96,8 @@ import { StaffDirectoryService } from './staff-directory/staff-directory.service
     MainPurposeComponent,
     StaffDirectoryComponent,
     DevelopersComponent,
-    HistoryOfBangladeshComponent
+    HistoryOfBangladeshComponent,
+    EmailSendingComponent
   ],
   imports: [
     BrowserModule,
@@ -120,7 +123,7 @@ import { StaffDirectoryService } from './staff-directory/staff-directory.service
 DonorService, TotalDonorService, LastYaerTotalDonorService, CurrentYaerTotalDonorService,
 LastYearGrantedListService, CurrentYearGrantedListService, LastYearNotGrantedListService
 , CurrentYearNotGrantedListService, ManageCandidatesService, ManageDonorService, ManageStaffService,
-StaffDirectoryService,
+StaffDirectoryService,EmailSendingService,
 // For Modal
 BsModalService],
   bootstrap: [AppComponent]

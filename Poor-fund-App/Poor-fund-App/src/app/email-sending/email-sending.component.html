@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+      <mat-progress-bar *ngIf="!msg" mode="indeterminate"></mat-progress-bar>
+      <br>
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-ms-10 col-ms-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1">
+      <form class="form" name="biodataForm" [formGroup]="biodataForm">
+        <div>
+          <p id="headingP">Please send email to the desired donors
+          </p>
+          <hr>
+        </div>
+       
+        <div class="formDiv">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="To" required type="email" autocomplete="off"
+              [(ngModel)]="email.to" [formControl]="toFormControl">
+            <mat-error *ngIf="toFormControl.invalid">{{getRequiredErrorMessageForString('to')}}</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Subject" required type="text" autocomplete="off"
+              [(ngModel)]="email.subject" [formControl]="subjectFormControl">
+            <mat-error *ngIf="subjectFormControl.invalid">{{getRequiredErrorMessageForString('subject')}}</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Message" required type="text"  autocomplete="off"
+              [(ngModel)]="email.message" [formControl]="messageFormControl">
+            <mat-error *ngIf="messageFormControl.invalid">{{getRequiredErrorMessageForString('message')}}</mat-error>
+          </mat-form-field>
+         
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="From" required type="email" autocomplete="off"
+             [(ngModel)]="email.from"
+              [formControl]="emailFormControl">
+            <mat-error *ngIf="emailFormControl.invalid">{{getRequiredErrorMessageForString('from')}}</mat-error>
+          </mat-form-field>
+          
+
+        </div>
+
+        <br>
+        <button id="submitButton" mat-raised-button color="primary" class="submit-button"
+         [disabled]="!(email.to
+        && email.subject && email.message && email.from)"
+          (click)="sendingEmail()">Send</button>
+      </form>
+
+    </div>
+  </div>
+</div>
