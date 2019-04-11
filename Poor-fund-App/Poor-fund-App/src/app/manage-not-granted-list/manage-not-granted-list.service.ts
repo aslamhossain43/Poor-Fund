@@ -11,14 +11,14 @@ pushNotGrant(status: string, notGrantId: string) {
 const formData: FormData = new FormData();
 formData.append('notGrantId', notGrantId);
 formData.append('status', status);
-return this.http.post('http://localhost:8080/mng/addNotGrant', formData);
+return this.http.post('/mng/addNotGrant', formData);
 
 }
 
 
 
 getAllCandidatesList(): Observable<AllCandidates[]> {
-    return this.http.get('http://localhost:8080/gl/getAllList')
+    return this.http.get('/gl/getAllList')
         .pipe(map((response: Response) => response.json()),
             catchError(this.handleError));
 }

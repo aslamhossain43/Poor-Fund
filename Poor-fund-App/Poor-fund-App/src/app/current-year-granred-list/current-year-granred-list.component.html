@@ -11,9 +11,9 @@
                   <div class="thumbnail">
                       <p>Apply Date : {{cygl.createdDate}}</p>
                       <p>Candidate<span class="caret"></span></p>
-                    <img src="assets/client-images/{{cygl.piCode}}.jpg">
+                    <img src="/getPhotos/{{cygl.piCode}}">
                     <p>Application<span class="caret"></span></p>
-                    <img src="assets/client-images/{{cygl.apiCode}}.jpg">
+                    <img src="/getPhotos/{{cygl.apiCode}}">
                       
                       <div class="caption">
                           <p>Details Address<span class="caret"></span></p>
@@ -27,7 +27,7 @@
                          <p>bKash : {{cygl.bkash}}</p>
                          <p>Granted Date : {{cygl.lastModifiedDate}}</p>
                          <img *ngIf="cygl.prCode && cygl.status===granted" id="provedImg" src="assets/images/granted.jpg">
-                         <img *ngIf="cygl.prCode && cygl.status===granted" id="provedImg" src="assets/granted-images/{{cygl.prCode}}.jpg">
+                         <img *ngIf="cygl.prCode && cygl.status===granted" id="provedImg" src="/getPhotos/{{cygl.prCode}}">
                       
                       </div>
 

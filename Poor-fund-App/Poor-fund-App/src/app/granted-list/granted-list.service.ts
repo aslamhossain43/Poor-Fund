@@ -9,7 +9,7 @@ export class GrantedListService {
     constructor(private http: Http) { }
 
     getGrantedList(): Observable<GrantedList[]> {
-        return this.http.get('http://localhost:8080/gl/getAllList')
+        return this.http.get('/gl/getAllList')
             .pipe(map((response: Response) => response.json()),
                 catchError(this.handleError));
     }

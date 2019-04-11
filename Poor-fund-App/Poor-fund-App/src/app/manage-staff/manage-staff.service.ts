@@ -19,22 +19,22 @@ formData.append('details', details);
 formData.append('id', id);
 
 formData.append('createdDate', createdDate);
-    return this.http.post('http://localhost:8080/staff/addStaff', formData);
+    return this.http.post('/staff/addStaff', formData);
 }
 
 
 getStaff(): Observable<Staff[]> {
-return this.http.get('http://localhost:8080/staff/getStaff')
+return this.http.get('/staff/getStaff')
 .pipe(map((response: Response) => response.json()),
 catchError(this.handleError));
 }
 getStaffById(id: string): Observable<Staff> {
-    return this.http.get('http://localhost:8080/staff/getStaffById/' + id)
+    return this.http.get('/staff/getStaffById/' + id)
     .pipe(map((response: Response) => response.json()),
     catchError(this.handleError));
     }
 deleteStaff(id: string) {
-    return this.http.delete('http://localhost:8080/staff/deleteStaff/' + id);
+    return this.http.delete('/staff/deleteStaff/' + id);
 }
 private handleError(error: Response) {
     return Observable.throw(error);

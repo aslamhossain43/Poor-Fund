@@ -9,7 +9,7 @@ export class LastYearNotGrantedListService {
     constructor(private http: Http) { }
 
     getLastYearNotGrantedList(): Observable<LastYearNotGrantedList[]> {
-        return this.http.get('http://localhost:8080/lycl/lastYearCandidateList')
+        return this.http.get('/lycl/lastYearCandidateList')
             .pipe(map((response: Response) => response.json()),
                 catchError(this.handleError));
     }

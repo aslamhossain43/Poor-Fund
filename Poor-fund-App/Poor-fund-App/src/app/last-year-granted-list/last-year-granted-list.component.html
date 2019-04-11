@@ -9,9 +9,9 @@
                   <div class="thumbnail">
                       <p>Apply Date : {{lygl.createdDate}}</p>
                       <p>Candidate<span class="caret"></span></p>
-                    <img src="assets/client-images/{{lygl.piCode}}.jpg">
+                    <img src="/getPhotos/{{lygl.piCode}}">
                     <p>Application<span class="caret"></span></p>
-                    <img src="assets/client-images/{{lygl.apiCode}}.jpg">
+                    <img src="/getPhotos/{{lygl.apiCode}}">
                       
                       <div class="caption">
                           <p>Details Address<span class="caret"></span></p>
@@ -25,7 +25,7 @@
                          <p>bKash : {{lygl.bkash}}</p>
                          <p>Granted Date : {{lygl.lastModifiedDate}}</p>
                          <img *ngIf="lygl.prCode && lygl.status===granted" id="provedImg" src="assets/images/granted.jpg">
-                         <img *ngIf="lygl.prCode && lygl.status===granted" id="provedImg" src="assets/granted-images/{{lygl.prCode}}.jpg">
+                         <img *ngIf="lygl.prCode && lygl.status===granted" id="provedImg" src="/getPhotos/{{lygl.prCode}}">
                       
                       </div>
 

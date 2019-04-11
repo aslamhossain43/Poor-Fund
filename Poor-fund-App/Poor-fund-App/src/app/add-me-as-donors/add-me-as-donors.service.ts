@@ -10,7 +10,7 @@ const body = JSON.stringify(donors);
 const headers = new Headers({'Content-Type': 'application/json'});
 const options = new RequestOptions({headers: headers});
 
-return this.http.post('http://localhost:8080/donors/addDonors', body, options);
+return this.http.post('/donors/addDonors', body, options);
 
 }
 }

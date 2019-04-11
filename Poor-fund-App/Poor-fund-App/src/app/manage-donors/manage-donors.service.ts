@@ -8,14 +8,14 @@ import { map, catchError } from 'rxjs/operators';
 export class ManageDonorService {
 constructor(private http: Http) {}
 getAllDonors(): Observable<ManageTotalDonors[]> {
-    return this.http.get('http://localhost:8080/md/getAllDonors')
+    return this.http.get('/md/getAllDonors')
     .pipe(map((response: Response) => response.json(),
     (error) => {
      catchError(this.errorHandler);
     }));
 }
 deleteDonor(id: string) {
-    return this.http.delete('http://localhost:8080/md/deleteDonors/' + id);
+    return this.http.delete('/md/deleteDonors/' + id);
 }
 private errorHandler(error: Response) {
 return Observable.throw(error);

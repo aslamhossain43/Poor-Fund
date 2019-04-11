@@ -10,7 +10,7 @@ export class CurrentYearGrantedListService {
     constructor(private http: Http) { }
 
     getCurrentYearGrantedList(): Observable<CurrentYearGrantedList[]> {
-        return this.http.get('http://localhost:8080/cycl/currentYearCandidateList')
+        return this.http.get('/cycl/currentYearCandidateList')
             .pipe(map((response: Response) => response.json()),
                 catchError(this.handleError));
     }

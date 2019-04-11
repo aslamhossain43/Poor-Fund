@@ -12,9 +12,9 @@
                     <div class="thumbnail">
                         <p>Apply Date : {{gl.createdDate}}</p>
                         <p>Candidate<span class="caret"></span></p>
-                      <img src="assets/client-images/{{gl.piCode}}.jpg">
+                      <img src="/getPhotos/{{gl.piCode}}">
                       <p>Application<span class="caret"></span></p>
-                      <img src="assets/client-images/{{gl.apiCode}}.jpg">
+                      <img src="/getPhotos/{{gl.apiCode}}">
                         
                         <div class="caption">
                             <p>Details Address<span class="caret"></span></p>
@@ -28,7 +28,7 @@
                            <p>bKash : {{gl.bkash}}</p>
                            <p>Granted Date : {{gl.lastModifiedDate}}</p>
                            <img *ngIf="gl.prCode && gl.status===granted" id="provedImg" src="assets/images/granted.jpg">
-                           <img *ngIf="gl.prCode && gl.status===granted" id="provedImg" src="assets/granted-images/{{gl.prCode}}.jpg">
+                           <img *ngIf="gl.prCode && gl.status===granted" id="provedImg" src="/getPhotos/{{gl.prCode}}">
                         
                         </div>
 

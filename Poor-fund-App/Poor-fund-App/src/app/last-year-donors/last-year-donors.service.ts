@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class LastYaerTotalDonorService {
 constructor(private http: Http) {}
 getLastYearTotalDonors(): Observable<Donors[]> {
-    return this.http.get('http://localhost:8080/lytd/lastYaerTotalDonors')
+    return this.http.get('/lytd/lastYaerTotalDonors')
     .pipe(map((response: Response) => response.json(),
     (error) => {
         catchError(this.handleError);

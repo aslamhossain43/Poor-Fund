@@ -13,24 +13,24 @@ export class ConsumerService {
         const headers = new Headers({ 'Content-Type': 'application/json' });
         const options = new RequestOptions({ headers: headers });
         if (consumers.id) {
-            return this.http.put('http://localhost:8080/consumers/updateConsumers/' + consumers.id, body, options);
+            return this.http.put('/consumers/updateConsumers/' + consumers.id, body, options);
         } else {
-            return this.http.post('http://localhost:8080/consumers/addConsumers', body, options);
+            return this.http.post('/consumers/addConsumers', body, options);
         }
     }
 
 
 getCurrentYearAllConsumers(): Observable<Consumers[]> {
-return this.http.get('http://localhost:8080/consumers/getConsumers')
+return this.http.get('/consumers/getConsumers')
 .pipe(map((response: Response) => response.json()),
 catchError(this.handlError));
 }
 deleteCandidate(id: string) {
-return this.http.delete('http://localhost:8080/consumers/deleteCandidate/' + id);
+return this.http.delete('/consumers/deleteCandidate/' + id);
 }
 
 getCandidateById(id: string): Observable<Consumers> {
-    return this.http.get('http://localhost:8080/consumers/candidateById/' + id)
+    return this.http.get('/consumers/candidateById/' + id)
     .pipe(map((response: Response) => response.json(),
     catchError(this.handlError)
     ));

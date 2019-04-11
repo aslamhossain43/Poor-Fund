@@ -7,7 +7,7 @@ export class UploadFileService {
     const formdata: FormData = new FormData();
     formdata.append('piFile', piFile);
     formdata.append('apiFile', apiFile);
-     return this.http.post('http://localhost:8080/consumers/addFile', formdata);
+     return this.http.post('/consumers/addFile', formdata);
   }
 
 }

@@ -9,7 +9,7 @@ export class StaffDirectoryService {
 constructor(private http: Http) {}
 
 getStaff(): Observable<Staff[]> {
-return this.http.get('http://localhost:8080/staff/getStaff')
+return this.http.get('/staff/getStaff')
 .pipe(map((response: Response) => response.json()),
 catchError(this.handleError));
 }

@@ -12,14 +12,14 @@ const formData: FormData = new FormData();
 formData.append('provedFile', selectedProvedFile);
 formData.append('grantId', grantId);
 formData.append('status', status);
-return this.http.post('http://localhost:8080/mg/addGrant', formData);
+return this.http.post('/mg/addGrant', formData);
 
 }
 
 
 
 getAllCandidatesList(): Observable<AllCandidates[]> {
-    return this.http.get('http://localhost:8080/gl/getAllList')
+    return this.http.get('/gl/getAllList')
         .pipe(map((response: Response) => response.json()),
             catchError(this.handleError));
 }

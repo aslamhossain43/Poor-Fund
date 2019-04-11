@@ -11,12 +11,12 @@ constructor(private http: Http) {}
 
 
 getAllCandidatesForManage(): Observable<ManageAllCandidates[]> {
-    return this.http.get('http://localhost:8080/mc/getAllCandidates')
+    return this.http.get('/mc/getAllCandidates')
         .pipe(map((response: Response) => response.json()),
             catchError(this.handleError));
 }
 deleteCandidates(candidateId: string) {
-    return this.http.delete('http://localhost:8080/mc/deleteCandidate/' + candidateId);
+    return this.http.delete('/mc/deleteCandidate/' + candidateId);
 }
 
 private handleError(error: Response) {
