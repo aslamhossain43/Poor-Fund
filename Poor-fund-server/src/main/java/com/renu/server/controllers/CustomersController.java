@@ -34,9 +34,9 @@ public class CustomersController {
 	CustomersRepository consumersRepository;
 	public String piCode = null;
 	public String apiCode = null;
-	private static final String ABS_PATH = "/poor-fund-images/";
+	private static final String ABS_PATH = "/home/atif/student-fund-images/";
 	
-	private static final String ABS_PATH_FOR_GRANTED_NOT_GRANTED = "/poor-fund-images/";
+	private static final String ABS_PATH_FOR_GRANTED_NOT_GRANTED = "/home/atif/student-fund-images/";
 	
 	@GetMapping(value="/getConsumers")
 	public ResponseEntity<List<Consumers>>getAllConsumers(){
