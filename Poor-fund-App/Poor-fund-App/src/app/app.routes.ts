@@ -55,6 +55,7 @@ export const router: Routes = [
   { path: 'manage-notGrant', component: ManageNotGrantedListComponent},
   { path: 'manage-candidates', component: ManageCandidatesComponent},
   { path: 'manage-donors', component: ManageDonorsComponent},
+  { path: 'manage-email', component: EmailComponent},
   { path: 'manage-staff', component: ManageStaffComponent},
   { path: 'signup', component: SignupComponent }
 ];
