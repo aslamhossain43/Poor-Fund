@@ -1,6 +1,5 @@
 package com.renu.server.controllers;
 
-
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -14,17 +13,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.renu.server.models.Consumers;
 import com.renu.server.repositories.CustomersRepository;
 
-
-@RequestMapping(value="/ngl")
+@RequestMapping(value = "/ngl")
 @RestController
 public class NotGrantedListController {
-	private static final Logger LOGGER=LoggerFactory.getLogger(NotGrantedListController.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(NotGrantedListController.class);
 	@Autowired
 	CustomersRepository consumersRepository;
-	@GetMapping(value="/notGrantedList")
-	public ResponseEntity<List<Consumers>>notGrantedList(){
+
+	@GetMapping(value = "/notGrantedList")
+	public ResponseEntity<List<Consumers>> notGrantedList() {
 		LOGGER.info("FROM class NotGrantedListController, method : notGrantedList()");
-		List<Consumers>consumers=consumersRepository.findAll();
+		List<Consumers> consumers = consumersRepository.findAll();
 		return ResponseEntity.ok().body(consumers);
 	}
 }
