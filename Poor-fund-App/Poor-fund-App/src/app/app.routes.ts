@@ -27,6 +27,7 @@ import { MainPurposeComponent } from './main-purpose/main-purpose.component';
 import { StaffDirectoryComponent } from './staff-directory/staff-directory.component';
 import { DevelopersComponent } from './developers/developers.component';
 import { HistoryOfBangladeshComponent } from './history-of-bangladesh/history-of-bangladesh.component';
+import { EmailSendingComponent } from './email-sending/email-sending.component';
 export const router: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
@@ -55,7 +56,7 @@ export const router: Routes = [
   { path: 'manage-notGrant', component: ManageNotGrantedListComponent},
   { path: 'manage-candidates', component: ManageCandidatesComponent},
   { path: 'manage-donors', component: ManageDonorsComponent},
-  { path: 'manage-email', component: EmailComponent},
+  { path: 'manage-email', component: EmailSendingComponent},
   { path: 'manage-staff', component: ManageStaffComponent},
   { path: 'signup', component: SignupComponent }
 ];

@@ -1,19 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Email } from './email-sending';
 import { EmailSendingService } from './email-sending.service';
 import { Response } from '@angular/http';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
+import { fromBottom } from '../router.animations';
 
 @Component({
   selector: 'app-email-sending',
   templateUrl: './email-sending.component.html',
-  styleUrls: ['./email-sending.component.scss']
+  styleUrls: ['./email-sending.component.scss'],
+  animations: [fromBottom()]
 })
 export class EmailSendingComponent implements OnInit {
   msg = 'off';
 email = new Email();
 emails: Email[];
   constructor(private emailService: EmailSendingService) { }
+  @HostBinding('@fromBottom')
 
   toFormControl = new FormControl('', [Validators.required]);
   subjectFormControl = new FormControl('', [Validators.required]);
@@ -44,7 +47,7 @@ sendingEmail():void{
   this.msg = '';
 this.emailService.sendingEmail(this.email)
 .subscribe((response: Response)=>{
-  alert('Your operation has been completed successfully !!!');
+  alert('Email has been sent!!!');
   this.msg = 'offMsg';
 },
 (error) => {
