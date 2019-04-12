@@ -31,10 +31,16 @@
           </mat-form-field>
           <br>
           <mat-form-field class="full-width">
-            <input matInput placeholder="Message" required type="text"  autocomplete="off"
-              [(ngModel)]="email.message" [formControl]="messageFormControl">
-            <mat-error *ngIf="messageFormControl.invalid">{{getRequiredErrorMessageForString('message')}}</mat-error>
-          </mat-form-field>
+            <textarea matInput required
+            cdkTextareaAutosize
+            #autosize="cdkTextareaAutosize"
+            cdkAutosizeMinRows="5"
+            cdkAutosizeMaxRows="10"
+            placeholder="Message"
+              [(ngModel)]="email.message" [formControl]="messageFormControl"></textarea>
+              <mat-error *ngIf="messageFormControl.invalid">{{getRequiredErrorMessageForString('message')}}</mat-error>
+          
+            </mat-form-field>
          
 
 

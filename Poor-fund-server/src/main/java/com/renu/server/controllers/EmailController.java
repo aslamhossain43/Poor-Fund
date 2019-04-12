@@ -38,8 +38,10 @@ public class EmailController {
 		helper.setTo(emailSending.getTo());
 		helper.setSubject(emailSending.getSubject());
 		helper.setText(emailSending.getMessage());
-		sendMailAsynchronously(message);
-
+LOGGER.info("To : "+emailSending.getTo());
+LOGGER.info("Subject : "+emailSending.getSubject());
+LOGGER.info("Message : "+emailSending.getMessage());
+sendMailAsynchronously(message);
 		emailSendingRepository.save(emailSending);
 
 		return ResponseEntity.ok().body("Email is sending");
@@ -49,6 +51,7 @@ public class EmailController {
 
 	@Async
 	private void sendMailAsynchronously(MimeMessage message) {
+		LOGGER.info("From sendMailAsynchronously()-----ENTER-----");
 		sender.send(message);
 
 	}
