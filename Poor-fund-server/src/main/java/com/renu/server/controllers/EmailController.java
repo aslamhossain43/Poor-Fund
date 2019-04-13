@@ -58,9 +58,17 @@ public class EmailController {
 
 	@RequestMapping(value = "/gettingEmails")
 	public ResponseEntity<List<EmailSending>> gettingEmails() {
-		LOGGER.info("From class EmailController,method : gettingEmail()-----ENTER-----");
+		LOGGER.info("From class EmailController,method : gettingEmails()-----ENTER-----");
 		List<EmailSending> emailSendings = emailSendingRepository.findAll();
 		return ResponseEntity.ok().body(emailSendings);
+
+	}
+	
+	@RequestMapping(value = "/gettingEmail/{id}")
+	public ResponseEntity<EmailSending> gettingEmail(@PathVariable Long id) {
+		LOGGER.info("From class EmailController,method : gettingEmail()-----ENTER-----");
+		EmailSending emailSending = emailSendingRepository.getById(id);
+		return ResponseEntity.ok().body(emailSending);
 
 	}
 

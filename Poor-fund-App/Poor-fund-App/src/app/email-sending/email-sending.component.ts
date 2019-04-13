@@ -5,6 +5,7 @@ import { Response } from '@angular/http';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { fromBottom } from '../router.animations';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-email-sending',
   templateUrl: './email-sending.component.html',
@@ -23,7 +24,7 @@ export class EmailSendingComponent implements OnInit {
 
   msg = 'off';
   email = new Email();
-  emails: Email[];
+  emails: Observable<Email[]>;
 
   constructor(private emailService: EmailSendingService) {
 
@@ -33,13 +34,13 @@ export class EmailSendingComponent implements OnInit {
     for (let i = 1; i <= 100; i++) { users.push(createNewUser(i)); }
 */
     // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(this.emails);
+   // this.dataSource = new MatTableDataSource(this.emails);
    // -------------------------------------------------------
 
   }
 
   ngOnInit() {
-
+this.gettingEmails();
   }
 
   @HostBinding('@fromBottom')
@@ -66,34 +67,66 @@ export class EmailSendingComponent implements OnInit {
   sendingEmail(): void {
     this.msg = '';
     this.emailService.sendingEmail(this.email)
-      .subscribe((response: Response) => {
+      .subscribe(response => {
+       
         alert('Email has been sent!!!');
         this.msg = 'offMsg';
+console.log('From method : sendingEmail(),,,'+response);
       },
-        (error) => {
+        error=> {
+          console.log('From method : sendingEmail(),,,'+error)
           alert('Fail your operation !!!');
         });
 
+  }
 
+  updateEmail(): void {
+    this.msg = '';
+    this.emailService.sendingEmail(this.email)
+      .subscribe(response => {
+       
+        alert('Email has been sent!!!');
+        this.msg = 'offMsg';
+console.log('From method : updateEmail(),,,'+response);
+      },
+        error=> {
+          console.log('From method : updateEmail(),,,'+error)
+          alert('Fail your operation !!!');
+        });
 
   }
 
+
   gettingEmails(): void {
     this.emailService.getEmails()
-      .subscribe(email => {
-        this.emails = email;
-      });
+    .subscribe(data=>{
+      this.emails = data;
+      console.log('From method : gettingEmails(),,,'+data);
+    },
+    error=>{
+      console.log('From method : gettingEmails(),,,'+error);
+    })
+  }
 
 
+  gettingEmail(id:string): void {
+    this.emailService.getEmail(id)
+    .subscribe(data=>{
+      this.email = data;
+      console.log('From method : gettingEmail(),,,'+data);
+    },
+    error=>{
+      console.log('From method : gettingEmail(),,,'+error);
+    })
   }
 
   deleteEmail(id: string) {
     this.emailService.deleteEmail(id)
-      .subscribe(res => Response => {
-
+      .subscribe(response =>{
+        console.log('From method : deleteEmail(),,,'+response);
       },
-        (error) => {
-
+        error => {
+          console.log('From method : sendingEmail(),,,'+error)
         });
 
   }

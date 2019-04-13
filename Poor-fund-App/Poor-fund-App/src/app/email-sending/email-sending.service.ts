@@ -1,36 +1,30 @@
 import { Injectable } from "@angular/core";
-import { Http, Headers, RequestOptions, Response } from "@angular/http";
-import { Email } from "./email-sending";
-import { map, catchError } from "rxjs/operators";
 import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class EmailSendingService {
 
-constructor(private http: Http) {}
+  constructor(private httpClient: HttpClient) { }
 
-sendingEmail(email: Email) {
-    const body = JSON.stringify(email);
-    const headers = new Headers({ 'Content-Type': 'application/json' });
-    const options = new RequestOptions({ headers: headers });
-      return this.http.post('/emailSending', body, options);
-   
-}
+  sendingEmail(email: Object): Observable<Object> {
+
+    return this.httpClient.post('http://localhost:8081/emailSending', email);
+
+  }
 
 
-getEmails(): Observable<Email[]> {
-return this.http.get('http://localhost:8081/gettingEmails')
-.pipe(map((response: Response) => response.json()),
-catchError(this.handlError));
-}
-deleteEmail(id: string) {
-return this.http.delete('/deleteById/' + id);
-}
+  getEmails(): Observable<any> {
+    return this.httpClient.get(`http://localhost:8081/gettingEmails`);
+  }
 
-public handlError(error: Response) {
-return Observable.throw(error);
-}
+  getEmail(id:string): Observable<any> {
+    return this.httpClient.get(`http://localhost:8081/gettingEmail/${id}`);
+  }
 
+  deleteEmail(id: string): Observable<any> {
+    return this.httpClient.delete('http://localhost:8081/deleteById/' + id);
+  }
 
 
 

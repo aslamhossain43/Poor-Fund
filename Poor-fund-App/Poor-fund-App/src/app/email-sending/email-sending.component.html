@@ -47,10 +47,15 @@
         </div>
 
         <br>
-        <button id="submitButton" mat-raised-button color="primary" class="submit-button"
+        <button *ngIf="!email.id" id="submitButton" mat-raised-button color="primary" class="submit-button"
          [disabled]="!(email.to
         && email.subject && email.message)"
           (click)="sendingEmail()">Send</button>
+
+          <button *ngIf="email.id" id="submitButton" mat-raised-button color="primary" class="submit-button"
+         [disabled]="!(email.id && email.to
+        && email.subject && email.message)"
+          (click)="updateEmail()">Update</button>
       </form>
 
     </div>
@@ -76,19 +81,19 @@
 
     <!-- Progress Column -->
     <ng-container matColumnDef="to">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Progress </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> To </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.to}} </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="subject">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Subject </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.subject}} </mat-cell>
     </ng-container>
 
     <!-- Color Column -->
     <ng-container matColumnDef="message">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> Color </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Message </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{row.message}} </mat-cell>
     </ng-container>
 
