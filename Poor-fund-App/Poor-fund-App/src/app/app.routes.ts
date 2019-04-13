@@ -1,11 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ConsumersComponent } from './consumers/consumers.component';
-import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { AuthGuard } from './auth.service';
 import { ModuleWithProviders } from '@angular/core';
-import { EmailComponent } from './email/email.component';
 import { GrantedListComponent } from './granted-list/granted-list.component';
 import { NotGrantedListComponent } from './not-granted-list/not-granted-list.component';
 import { GrantingInformationComponent } from './granting-information/granting-information.component';
@@ -31,7 +29,6 @@ import { EmailSendingComponent } from './email-sending/email-sending.component';
 export const router: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'login-email', component: EmailComponent },
   { path: 'home', component: HomeComponent },
   { path: 'main-purpose', component: MainPurposeComponent },
   { path: 'staff-directory', component: StaffDirectoryComponent },
@@ -57,8 +54,7 @@ export const router: Routes = [
   { path: 'manage-candidates', component: ManageCandidatesComponent},
   { path: 'manage-donors', component: ManageDonorsComponent},
   { path: 'manage-email', component: EmailSendingComponent},
-  { path: 'manage-staff', component: ManageStaffComponent},
-  { path: 'signup', component: SignupComponent }
+  { path: 'manage-staff', component: ManageStaffComponent}
 ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(router);

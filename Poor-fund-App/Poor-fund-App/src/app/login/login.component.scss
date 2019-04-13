@@ -4,8 +4,8 @@
 .form-container {
     background:pink;
     padding:1.2em;
-    margin-top: 5%;
-   margin-bottom: 1%;
+    margin-top: 10%;
+   margin-bottom: 5%;
     width:50%;
     margin-left:25%;
     height:100%;
@@ -39,10 +39,6 @@ button{
     background-size: 25px;
 }
 
-#email {
-    background: #ECECEC;
-    background-size: 25px;
-}
 
 @media (max-width: 600px) {
     #page {
@@ -60,9 +56,6 @@ button{
         background: #fff;
     }
 
-    #email {
-        background: #ECECEC;
-    }
 }
 
 .alc {

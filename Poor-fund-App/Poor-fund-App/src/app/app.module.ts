@@ -5,8 +5,6 @@ import { HomeComponent } from './home/home.component';
 import { ConsumersComponent } from './consumers/consumers.component';
 import { NavComponent } from './nav/nav.component';
 import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
-import { EmailComponent } from './email/email.component';
 // FOR bootstrap
 import { AppBootstrapModule } from './app-bootstrap.module';
 // AUTHENTICATION
@@ -66,6 +64,7 @@ import { ManageStaffService } from './manage-staff/manage-staff.service';
 import { StaffDirectoryService } from './staff-directory/staff-directory.service';
 import { EmailSendingComponent } from './email-sending/email-sending.component';
 import { EmailSendingService } from './email-sending/email-sending.service';
+import { MatPaginatorModule } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,8 +72,6 @@ import { EmailSendingService } from './email-sending/email-sending.service';
     ConsumersComponent,
     NavComponent,
     LoginComponent,
-    SignupComponent,
-    EmailComponent,
     ManageGrantedListComponent,
     GrantedListComponent,
     NotGrantedListComponent,
@@ -113,6 +110,7 @@ import { EmailSendingService } from './email-sending/email-sending.service';
     // FOR FILE UPLOAD
     HttpClientModule,
     // FOR NG MATERIAL
+    MatPaginatorModule,
     NgMaterialModule,
     // FOR REACTIVE FORM MODULE
     ReactiveFormsModule,

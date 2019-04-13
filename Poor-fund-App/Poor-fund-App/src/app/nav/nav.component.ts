@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 uidDataBase = '1lF136L2aegcwAE2LLbJwPZvH2S2';
+emailuid0043 = 'cBc5uZZxcmVurWewTGru2aiLObg1';
 uid: string;
   authenticatedName: any;
   photoUrl: string;
@@ -20,6 +21,7 @@ uid: string;
       }
       this.photoUrl = auth.photoURL;
       this.uid = auth.uid;
+      console.log('uid: '+auth.uid);
     });
 
   }
@@ -33,6 +35,7 @@ uid: string;
     this.router.navigateByUrl('/login');
   }
   ngOnInit() {
+    console.log(this.uid);
   }
 
 }

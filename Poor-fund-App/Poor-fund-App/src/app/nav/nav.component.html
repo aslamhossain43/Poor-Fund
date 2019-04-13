@@ -93,7 +93,7 @@
           </ng-template>
         </li>
 
-        <li *ngIf="uid === uidDataBase">
+        <li *ngIf="uid === uidDataBase || uid === emailuid0043">
           <ng-template ngIf="true">
             <a><button mat-button [matMenuTriggerFor]="manage" #matMenuTrigger="matMenuTrigger" (mouseenter)="matMenuTrigger.openMenu()">Manage<span
                   class="caret"></span></button></a>

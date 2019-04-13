@@ -38,16 +38,16 @@ public class EmailController {
 		helper.setTo(emailSending.getTo());
 		helper.setSubject(emailSending.getSubject());
 		helper.setText(emailSending.getMessage());
-LOGGER.info("To : "+emailSending.getTo());
-LOGGER.info("Subject : "+emailSending.getSubject());
-LOGGER.info("Message : "+emailSending.getMessage());
-sendMailAsynchronously(message);
+		LOGGER.info("To : " + emailSending.getTo());
+		LOGGER.info("Subject : " + emailSending.getSubject());
+		LOGGER.info("Message : " + emailSending.getMessage());
+
+		sendMailAsynchronously(message);
 		emailSendingRepository.save(emailSending);
 
 		return ResponseEntity.ok().body("Email is sending");
 
 	}
-	
 
 	@Async
 	private void sendMailAsynchronously(MimeMessage message) {

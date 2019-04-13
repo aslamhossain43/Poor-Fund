@@ -19,7 +19,7 @@ sendingEmail(email: Email) {
 
 
 getEmails(): Observable<Email[]> {
-return this.http.get('/gettingEmails')
+return this.http.get('http://localhost:8081/gettingEmails')
 .pipe(map((response: Response) => response.json()),
 catchError(this.handlError));
 }

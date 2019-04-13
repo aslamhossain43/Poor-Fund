@@ -27,6 +27,7 @@ import {
     MatListModule,
     MatMenuModule,
     MatNativeDateModule,
+    MatPaginatorModule,
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatRadioModule,
@@ -40,7 +41,7 @@ import {
     MatTableModule,
     MatTabsModule,
     MatToolbarModule,
-    MatTooltipModule,
+    MatTooltipModule
   } from '@angular/material';
 @NgModule({
     imports: [ // CDK
@@ -69,6 +70,7 @@ import {
         MatInputModule,
         MatListModule,
         MatMenuModule,
+        MatPaginatorModule,
         MatProgressBarModule,
         MatProgressSpinnerModule,
         MatRadioModule,
