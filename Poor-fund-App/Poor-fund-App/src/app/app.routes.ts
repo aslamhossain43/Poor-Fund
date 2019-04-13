@@ -27,7 +27,7 @@ import { DevelopersComponent } from './developers/developers.component';
 import { HistoryOfBangladeshComponent } from './history-of-bangladesh/history-of-bangladesh.component';
 import { EmailSendingComponent } from './email-sending/email-sending.component';
 export const router: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', component: HomeComponent},
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'main-purpose', component: MainPurposeComponent },
