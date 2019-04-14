@@ -105,8 +105,7 @@ public class EmailController {
 			LOGGER.info("From class EmailController,method : sendingEmail()--ERROR---");
 			return null;
 		}
-		
-		
+
 	}
 
 	@RequestMapping(value = "/deleteById/{id}")
