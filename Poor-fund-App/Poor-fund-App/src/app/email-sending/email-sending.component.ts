@@ -1,12 +1,10 @@
-import { Component, OnInit, HostBinding, ViewChild, HostListener } from '@angular/core';
+import { Component, OnInit, HostBinding, ViewChild, TemplateRef} from '@angular/core';
 import { Email } from './email-sending';
 import { EmailSendingService } from './email-sending.service';
-import { Response } from '@angular/http';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { fromBottom } from '../router.animations';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-import { Observable } from 'rxjs';
-import { HttpResponse } from '@angular/common/http';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 @Component({
   selector: 'app-email-sending',
   templateUrl: './email-sending.component.html',
@@ -16,26 +14,38 @@ import { HttpResponse } from '@angular/common/http';
 export class EmailSendingComponent implements OnInit {
   // ----------------------------------------------
 // DATA TABLE
-  displayedColumns = ['id', 'to', 'subject', 'message','createdDate','lastModifiedDate'];
+  displayedColumns = ['id', 'to', 'subject', 'message','createdDate','lastModifiedDate','Update','Delete'];
   dataSource: MatTableDataSource<Email>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   // -------------------------------------------
 
+
+   // FOR NGX BOOTSTRAP  MODAL
+   public modalRef: BsModalRef;
+
+//------------------------------------------------
   msg = 'off';
   email = new Email();
   emails: Email[];
 
-  constructor(private emailService: EmailSendingService) {
+  constructor(private emailService: EmailSendingService,
+    // FOR NGX BOOTSTRAP  MODAL
+    private modalService: BsModalService) {
 
   }
-  
+  //---------------------------------------------------------------------
+  // FOR NGX BOOTSTRAP  MODAL
+ public openModal(template: TemplateRef<any>) {
+  this.modalRef = this.modalService.show(template);
+ }
+ //-----------------------------------------------------------------------------------
   ngOnInit() {
 this.gettingEmails();
   this.dataSource = new MatTableDataSource();
   }
-
+//--------------------------------------------------------------------------------------
   @HostBinding('@fromBottom')
 
   toFormControl = new FormControl('', [Validators.required]);
@@ -60,17 +70,21 @@ this.gettingEmails();
   sendingEmail(): void {
     this.msg = '';
     this.emailService.sendingEmail(this.email)
-      .subscribe((response) => {
-       
-        alert('Email has been sent!!!');
+      .subscribe(response=> {
+      if(response === null){
+        alert('Fail your operation !!!');
         this.msg = 'offMsg';
+        this.email=new Email();
+        this.gettingEmails();
+      }
+       else{
+        alert('Email has been sent!!!');
+        this.msg = 'offMsg'; 
+        this.email=new Email();
+        this.gettingEmails();
+       }
 console.log('From method : sendingEmail(),,,'+response);
-      },
-        (error)=> {
-          console.log('From method : sendingEmail(),,,'+error)
-          alert('Fail your operation !!!');
-        });
-
+      });
   }
 
 //---------------------------------------------------------------------------------------
@@ -78,14 +92,17 @@ console.log('From method : sendingEmail(),,,'+response);
     this.msg = '';
     this.emailService.sendingEmail(this.email)
       .subscribe(response => {
-       
-        alert('Email has been sent!!!');
-        this.msg = 'offMsg';
-console.log('From method : updateEmail(),,,'+response);
-      },
-        (error)=> {
-          console.log('From method : updateEmail(),,,'+error)
-          alert('Fail your operation !!!');
+        if(response === null){
+          alert('Not sent email,try again !!!');
+          this.msg = 'offMsg';
+          this.gettingEmails();
+        }
+         else{
+          alert('Email has been updated!!!');
+          this.msg = 'offMsg'; 
+          this.gettingEmails();
+         }
+  console.log('From method : sendingEmail(),,,'+response);
         });
 
   }
@@ -118,9 +135,11 @@ console.log('From method : updateEmail(),,,'+response);
   deleteEmail(id: string) {
     this.emailService.deleteEmail(id)
       .subscribe(response =>{
+        this.gettingEmails();
         console.log('From method : deleteEmail(),,,'+response);
       },
         error => {
+          this.gettingEmails();
           console.log('From method : sendingEmail(),,,'+error)
         });
 

@@ -14,6 +14,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -30,31 +31,28 @@ public class EmailController {
 	@Autowired
 	EmailSendingRepository emailSendingRepository;
 
-	@RequestMapping(value = "/emailSending")
-	public ResponseEntity<String> sendingEmail(@RequestBody EmailSending emailSending) {
+	@PostMapping(value = "/emailSending")
+	public EmailSending sendingEmail(@RequestBody EmailSending emailSending) {
 		LOGGER.info("From class EmailController,method : sendingEmail()-----ENTER-----");
 
 		MimeMessage message = sender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 
 		try {
+
+			LOGGER.info("To : " + emailSending.getTo());
+			LOGGER.info("Subject : " + emailSending.getSubject());
+			LOGGER.info("Message : " + emailSending.getMessage());
 			helper.setTo(emailSending.getTo());
 			helper.setSubject(emailSending.getSubject());
 			helper.setText(emailSending.getMessage());
 			sendMailAsynchronously(message);
-			emailSendingRepository.save(emailSending);
-			LOGGER.info("To : " + emailSending.getTo());
-			LOGGER.info("Subject : " + emailSending.getSubject());
-			LOGGER.info("Message : " + emailSending.getMessage());
+			return emailSendingRepository.save(emailSending);
 
-			return new ResponseEntity<>("Email is sent to "+emailSending.getTo(),HttpStatus.OK);
-
-		} catch (MessagingException e) {
-			e.printStackTrace();
-			return new ResponseEntity<>("Email is not sent to "+emailSending.getTo(),HttpStatus.BAD_REQUEST);
-			}
-
-
+		} catch (Exception e) {
+			LOGGER.info("From class EmailController,method : sendingEmail()--ERROR---");
+			return null;
+		}
 
 	}
 
@@ -72,7 +70,7 @@ public class EmailController {
 		return ResponseEntity.ok().body(emailSendings);
 
 	}
-	
+
 	@RequestMapping(value = "/gettingEmail/{id}")
 	public ResponseEntity<EmailSending> gettingEmail(@PathVariable Long id) {
 		LOGGER.info("From class EmailController,method : gettingEmail()-----ENTER-----");
@@ -80,20 +78,35 @@ public class EmailController {
 		return ResponseEntity.ok().body(emailSending);
 
 	}
-	
-	
-	@RequestMapping(value = "/updateEmail/{id}")
-	public ResponseEntity<?> updateEmail(@PathVariable Long id,@RequestBody
-			EmailSending emailSending) {
-		LOGGER.info("From class EmailController,method : updateEmail()-----ENTER-----");
-		EmailSending email = emailSendingRepository.getById(id);
-		email.setId(emailSending.getId());
-		email.setTo(emailSending.getTo());
-		email.setSubject(emailSending.getSubject());
-		email.setMessage(emailSending.getMessage());
-		emailSendingRepository.save(email);
-		return ResponseEntity.ok().body("email updated");
 
+	@RequestMapping(value = "/updateEmail/{id}")
+	public EmailSending updateEmail(@PathVariable Long id, @RequestBody EmailSending emailSending) {
+		LOGGER.info("From class EmailController,method : updateEmail()-----ENTER-----");
+		MimeMessage message = sender.createMimeMessage();
+		MimeMessageHelper helper = new MimeMessageHelper(message);
+
+		try {
+
+			LOGGER.info("To : " + emailSending.getTo());
+			LOGGER.info("Subject : " + emailSending.getSubject());
+			LOGGER.info("Message : " + emailSending.getMessage());
+			helper.setTo(emailSending.getTo());
+			helper.setSubject(emailSending.getSubject());
+			helper.setText(emailSending.getMessage());
+			sendMailAsynchronously(message);
+			EmailSending email = emailSendingRepository.getById(id);
+			email.setId(emailSending.getId());
+			email.setTo(emailSending.getTo());
+			email.setSubject(emailSending.getSubject());
+			email.setMessage(emailSending.getMessage());
+			return emailSendingRepository.save(email);
+
+		} catch (Exception e) {
+			LOGGER.info("From class EmailController,method : sendingEmail()--ERROR---");
+			return null;
+		}
+		
+		
 	}
 
 	@RequestMapping(value = "/deleteById/{id}")

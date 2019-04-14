@@ -76,6 +76,25 @@
 
   <mat-table [dataSource]="dataSource" matSort>
 
+
+
+<!--//delete template-------------------------------------------->
+<ng-template #deletetemplate>
+    <div class="modal-header">
+        <h4 class="modal-title">Notice confirm modal carefully </h4>
+       
+    </div>
+    <div class="modal-body">
+        Do you want to delete id : {{email.id}}?
+    </div>
+    <div class="modal-footer">
+      <button id="deleteBtn" class="btn btn-primary" (click)="deleteEmail(email.id)" (click)="modalRef.hide()">Confirm</button>
+      <button id="closeBtn" class="btn btn-primary" (click)="modalRef.hide()">Close</button>
+      
+  </div>
+  </ng-template>
+
+    <!--//--------------------------------------------------------------------------->
     <!-- ID Column -->
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
@@ -113,6 +132,28 @@
 </ng-container>
 
 
+
+<!-- Update Column -->
+<ng-container matColumnDef="Update">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Update </mat-header-cell>
+    <mat-cell *matCellDef="let email"> 
+        <button class="btn btn-primary" (click)="gettingEmail(email.id)">Update</button>
+      </mat-cell>
+  </ng-container>
+
+
+
+<!-- Delete Column -->
+<ng-container matColumnDef="Delete">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
+  <mat-cell *matCellDef="let email"> 
+      <button class="btn btn-primary" (click)="gettingEmail(email.id)" (click)="openModal(deletetemplate)">
+        Delete</button>
+    </mat-cell>
+</ng-container>
+
+
+  
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let email; columns: displayedColumns;">
     </mat-row>
