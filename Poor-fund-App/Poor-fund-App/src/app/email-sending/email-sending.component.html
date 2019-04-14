@@ -18,6 +18,8 @@
         </div>
        
         <div class="formDiv">
+          <input type="hidden" name="email.id">
+          
           <mat-form-field class="full-width">
             <input matInput placeholder="To" required type="email" autocomplete="off"
               [(ngModel)]="email.to" [formControl]="toFormControl">
@@ -62,6 +64,7 @@
   </div>
 </div>
 
+
 <!--//---------------------------------------------------------------->
 <div class="example-header">
   <mat-form-field>
@@ -76,29 +79,42 @@
     <!-- ID Column -->
     <ng-container matColumnDef="id">
       <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.id}} </mat-cell>
+      <mat-cell *matCellDef="let email"> {{email.id}} </mat-cell>
     </ng-container>
 
     <!-- Progress Column -->
     <ng-container matColumnDef="to">
       <mat-header-cell *matHeaderCellDef mat-sort-header> To </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.to}} </mat-cell>
+      <mat-cell *matCellDef="let email"> {{email.to}} </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="subject">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Subject </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.subject}} </mat-cell>
+      <mat-cell *matCellDef="let email"> {{email.subject}} </mat-cell>
     </ng-container>
 
     <!-- Color Column -->
     <ng-container matColumnDef="message">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Message </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{row.message}} </mat-cell>
+      <mat-cell *matCellDef="let email"> {{email.message}} </mat-cell>
     </ng-container>
 
+
+<!-- Color Column -->
+<ng-container matColumnDef="createdDate">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> CreatedDate </mat-header-cell>
+  <mat-cell *matCellDef="let email"> {{email.createdDate}} </mat-cell>
+</ng-container>
+<!-- Color Column -->
+<ng-container matColumnDef="lastModifiedDate">
+  <mat-header-cell *matHeaderCellDef mat-sort-header> lastModifiedDate </mat-header-cell>
+  <mat-cell *matCellDef="let email"> {{email.lastModifiedDate}} </mat-cell>
+</ng-container>
+
+
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;">
+    <mat-row *matRowDef="let email; columns: displayedColumns;">
     </mat-row>
   </mat-table>
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

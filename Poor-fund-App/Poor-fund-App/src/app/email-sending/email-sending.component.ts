@@ -6,6 +6,7 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { fromBottom } from '../router.animations';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { Observable } from 'rxjs';
+import { HttpResponse } from '@angular/common/http';
 @Component({
   selector: 'app-email-sending',
   templateUrl: './email-sending.component.html',
@@ -15,7 +16,7 @@ import { Observable } from 'rxjs';
 export class EmailSendingComponent implements OnInit {
   // ----------------------------------------------
 // DATA TABLE
-  displayedColumns = ['id', 'to', 'subject', 'message'];
+  displayedColumns = ['id', 'to', 'subject', 'message','createdDate','lastModifiedDate'];
   dataSource: MatTableDataSource<Email>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -24,23 +25,15 @@ export class EmailSendingComponent implements OnInit {
 
   msg = 'off';
   email = new Email();
-  emails: Observable<Email[]>;
+  emails: Email[];
 
   constructor(private emailService: EmailSendingService) {
 
-    // ---------------------------------------------------
-    // Create 100 users
-  /*  const users: UserData[] = [];
-    for (let i = 1; i <= 100; i++) { users.push(createNewUser(i)); }
-*/
-    // Assign the data to the data source for the table to render
-   // this.dataSource = new MatTableDataSource(this.emails);
-   // -------------------------------------------------------
-
   }
-
+  
   ngOnInit() {
 this.gettingEmails();
+  this.dataSource = new MatTableDataSource();
   }
 
   @HostBinding('@fromBottom')
@@ -63,23 +56,24 @@ this.gettingEmails();
     }
 
   }
-
+//----------------------------------------------------------------------------------
   sendingEmail(): void {
     this.msg = '';
     this.emailService.sendingEmail(this.email)
-      .subscribe(response => {
+      .subscribe((response) => {
        
         alert('Email has been sent!!!');
         this.msg = 'offMsg';
 console.log('From method : sendingEmail(),,,'+response);
       },
-        error=> {
+        (error)=> {
           console.log('From method : sendingEmail(),,,'+error)
           alert('Fail your operation !!!');
         });
 
   }
 
+//---------------------------------------------------------------------------------------
   updateEmail(): void {
     this.msg = '';
     this.emailService.sendingEmail(this.email)
@@ -89,26 +83,27 @@ console.log('From method : sendingEmail(),,,'+response);
         this.msg = 'offMsg';
 console.log('From method : updateEmail(),,,'+response);
       },
-        error=> {
+        (error)=> {
           console.log('From method : updateEmail(),,,'+error)
           alert('Fail your operation !!!');
         });
 
   }
 
-
+//------------------------------------------------------------------------------------
   gettingEmails(): void {
     this.emailService.getEmails()
     .subscribe(data=>{
       this.emails = data;
-      console.log('From method : gettingEmails(),,,'+data);
+      this.dataSource.data=data;
+      console.log('From method : gettingEmails(),,,'+this.emails);
     },
     error=>{
       console.log('From method : gettingEmails(),,,'+error);
     })
   }
 
-
+//------------------------------------------------------------------------------------
   gettingEmail(id:string): void {
     this.emailService.getEmail(id)
     .subscribe(data=>{
@@ -119,7 +114,7 @@ console.log('From method : updateEmail(),,,'+response);
       console.log('From method : gettingEmail(),,,'+error);
     })
   }
-
+//--------------------------------------------------------------------------------------
   deleteEmail(id: string) {
     this.emailService.deleteEmail(id)
       .subscribe(response =>{
@@ -131,16 +126,7 @@ console.log('From method : updateEmail(),,,'+response);
 
   }
 
-
-  // data tables
-
-  // ----------------------------------------------------------
-
-
-  /**
-   * Set the paginator and sort after the view init since this component will
-   * be able to query its view for the initialized paginator and sort.
-   */
+// data table------------------------------------------------------------------------
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -152,38 +138,4 @@ console.log('From method : updateEmail(),,,'+response);
     this.dataSource.filter = filterValue;
   }
 }
-
-/** Builds and returns a new User. */
-/*function createNewUser(id: number): UserData {
-  const name =
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
-}
-*/
-/** Constants used to fill up our data base. */
-/*const COLORS = ['maroon', 'red', 'orange', 'yellow', 'olive', 'green', 'purple',
-  'fuchsia', 'lime', 'teal', 'aqua', 'blue', 'navy', 'black', 'gray'];
-const NAMES = ['Maia', 'Asher', 'Olivia', 'Atticus', 'Amelia', 'Jack',
-  'Charlotte', 'Theodore', 'Isla', 'Oliver', 'Isabella', 'Jasper',
-  'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'];
-
-export interface UserData {
-  id: string;
-  name: string;
-  progress: string;
-  color: string;
-}
-
-*/
-/**  Copyright 2018 Google Inc. All Rights Reserved.
-    Use of this source code is governed by an MIT-style license that
-    can be found in the LICENSE file at http://angular.io/license */
-
-
+// ----------------------------------------------------------------------------------

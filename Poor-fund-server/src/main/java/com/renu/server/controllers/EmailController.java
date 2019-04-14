@@ -2,11 +2,13 @@ package com.renu.server.controllers;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -29,23 +31,30 @@ public class EmailController {
 	EmailSendingRepository emailSendingRepository;
 
 	@RequestMapping(value = "/emailSending")
-	public ResponseEntity<?> sendingEmail(@RequestBody EmailSending emailSending) throws Exception {
+	public ResponseEntity<String> sendingEmail(@RequestBody EmailSending emailSending) {
 		LOGGER.info("From class EmailController,method : sendingEmail()-----ENTER-----");
 
 		MimeMessage message = sender.createMimeMessage();
 		MimeMessageHelper helper = new MimeMessageHelper(message);
 
-		helper.setTo(emailSending.getTo());
-		helper.setSubject(emailSending.getSubject());
-		helper.setText(emailSending.getMessage());
-		LOGGER.info("To : " + emailSending.getTo());
-		LOGGER.info("Subject : " + emailSending.getSubject());
-		LOGGER.info("Message : " + emailSending.getMessage());
+		try {
+			helper.setTo(emailSending.getTo());
+			helper.setSubject(emailSending.getSubject());
+			helper.setText(emailSending.getMessage());
+			sendMailAsynchronously(message);
+			emailSendingRepository.save(emailSending);
+			LOGGER.info("To : " + emailSending.getTo());
+			LOGGER.info("Subject : " + emailSending.getSubject());
+			LOGGER.info("Message : " + emailSending.getMessage());
 
-		sendMailAsynchronously(message);
-		emailSendingRepository.save(emailSending);
+			return new ResponseEntity<>("Email is sent to "+emailSending.getTo(),HttpStatus.OK);
 
-		return ResponseEntity.ok().body("Email is sending");
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			return new ResponseEntity<>("Email is not sent to "+emailSending.getTo(),HttpStatus.BAD_REQUEST);
+			}
+
+
 
 	}
 
@@ -69,6 +78,21 @@ public class EmailController {
 		LOGGER.info("From class EmailController,method : gettingEmail()-----ENTER-----");
 		EmailSending emailSending = emailSendingRepository.getById(id);
 		return ResponseEntity.ok().body(emailSending);
+
+	}
+	
+	
+	@RequestMapping(value = "/updateEmail/{id}")
+	public ResponseEntity<?> updateEmail(@PathVariable Long id,@RequestBody
+			EmailSending emailSending) {
+		LOGGER.info("From class EmailController,method : updateEmail()-----ENTER-----");
+		EmailSending email = emailSendingRepository.getById(id);
+		email.setId(emailSending.getId());
+		email.setTo(emailSending.getTo());
+		email.setSubject(emailSending.getSubject());
+		email.setMessage(emailSending.getMessage());
+		emailSendingRepository.save(email);
+		return ResponseEntity.ok().body("email updated");
 
 	}
 
