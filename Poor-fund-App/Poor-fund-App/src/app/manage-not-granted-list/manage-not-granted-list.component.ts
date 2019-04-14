@@ -58,9 +58,8 @@ addNotGrant() {
 }
 
 reset() {
-  this.notGrant.notGrantId = null;
-  this.notGrant.status = null;
-}
+  this.notGrant=new NotGrant();
+  }
 // GET CANDIDATES
 getAllCandidates(): void {
 this.notGrantService.getAllCandidatesList()

@@ -29,9 +29,9 @@
                 <button mat-menu-item="about" [routerLink]="['/main-purpose']" [routerLinkActive]="['active']"
                   [routerLinkActiveOptions]="{ exact: true }"> Main Purpose</button>
                   <button mat-menu-item="about" [routerLink]="['/staff-directory']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Staff Directory</button>
+                  [routerLinkActiveOptions]="{ exact: true }">Assistant engineers</button>
                   <button mat-menu-item="about" [routerLink]="['/developers']" [routerLinkActive]="['active']"
-                  [routerLinkActiveOptions]="{ exact: true }">Developers</button>
+                  [routerLinkActiveOptions]="{ exact: true }">Developer</button>
                   <button mat-menu-item="about" [routerLink]="['/history-of-bangladesh']" [routerLinkActive]="['active']"
                   [routerLinkActiveOptions]="{ exact: true }">History Of Bangladesh</button>
               </div>
@@ -122,9 +122,6 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
-        <li id="signup"><a [routerLink]="['/signup']" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }">Sign
-            Up</a></li>
-
         <li id="login" *ngIf="!authenticatedName"><a [routerLink]="['/login']" [routerLinkActive]="['active']"
             [routerLinkActiveOptions]="{ exact: true }">Login</a></li>
 

@@ -67,10 +67,8 @@ addGrant() {
 }
 
 reset() {
-  this.grant.selectedProvedFile = null;
-  this.grant.grantId = null;
-  this.grant.status = null;
-}
+  this.grant=new Grant();
+  }
 // GET CANDIDATES
 getAllCandidates(): void {
 this.grantService.getAllCandidatesList()

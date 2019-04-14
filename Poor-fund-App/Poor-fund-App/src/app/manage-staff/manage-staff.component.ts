@@ -99,10 +99,8 @@ this.getAllStaff();
   });
 }
   reset() {
-    this.staff.sfile = null;
-    this.staff.name = null;
-    this.staff.job = null;
-    this.staff.details = null;
+    this.staff=new Staff();
+   
   }
 
 }
