@@ -38,7 +38,11 @@ export class EmailSendingComponent implements OnInit {
   //---------------------------------------------------------------------
   // FOR NGX BOOTSTRAP  MODAL
  public openModal(template: TemplateRef<any>) {
-  this.modalRef = this.modalService.show(template);
+   this.modalRef = this.modalService.show(template);
+ }
+ //-------------------------------------------------------------------
+ refresh(){
+  this.email=new Email();
  }
  //-----------------------------------------------------------------------------------
   ngOnInit() {
@@ -95,11 +99,13 @@ console.log('From method : sendingEmail(),,,'+response);
         if(response === null){
           alert('Not sent email,try again !!!');
           this.msg = 'offMsg';
+          this.email=new Email();
           this.gettingEmails();
         }
          else{
           alert('Email has been updated!!!');
           this.msg = 'offMsg'; 
+          this.email=new Email();
           this.gettingEmails();
          }
   console.log('From method : sendingEmail(),,,'+response);

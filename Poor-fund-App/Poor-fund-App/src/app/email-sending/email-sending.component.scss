@@ -62,11 +62,18 @@
   .mat-table {
     overflow: auto;
     max-height: auto;
-    max-width: auto;
   }
-
-
-
-
-
-
+/*.mat-cell{
+  text-align: left;
+  width: auto;
+  height: auto;
+  display: block;
+}
+*/
+.mat-cell {
+  font-size: 10px;
+  height: auto;
+  max-width: auto;
+  text-align: left;
+  border-right: 1px solid blue;
+}

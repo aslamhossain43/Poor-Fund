@@ -88,8 +88,9 @@
         Do you want to delete id : {{email.id}}?
     </div>
     <div class="modal-footer">
-      <button id="deleteBtn" class="btn btn-primary" (click)="deleteEmail(email.id)" (click)="modalRef.hide()">Confirm</button>
-      <button id="closeBtn" class="btn btn-primary" (click)="modalRef.hide()">Close</button>
+      <button id="deleteBtn" class="btn btn-primary" (click)="deleteEmail(email.id)" (click)="modalRef.hide()"
+      (click)="refresh()">Confirm</button>
+      <button id="closeBtn" class="btn btn-primary" (click)="modalRef.hide()" (click)="refresh()">Close</button>
       
   </div>
   </ng-template>

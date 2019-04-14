@@ -156,16 +156,8 @@ getConsumers(): void {
   }
 
   reset() {
-    this.consumer.name = null;
-    this.consumer.country = null;
-    this.consumer.zela = null;
-    this.consumer.upozela = null;
-    this.consumer.union = null;
-    this.consumer.work = null;
-    this.consumer.contact = null;
-    this.consumer.bkash = null;
-    this.consumer.selectedPiFile = null;
-    this.consumer.selectedApiFile = null;
+  this.consumer=new Consumers();
+  
   }
   deleteCandidate(id: string) {
     this.consumerService.deleteCandidate(id)
