@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PhotosAccess {
 	private static final Logger LOGGER = LoggerFactory.getLogger(PhotosAccess.class);
 //GET PROFILE PHOTO URL
-	private static final Path PHOTO_URL = Paths.get("/home/atif/student-fund-images/");
+	private static final Path PHOTO_URL = Paths.get("/root/student-fund-images/");
 
 	@GetMapping("/getPhotos/{photoCode}")
 	public ResponseEntity<Resource> getAllPhotos(@PathVariable("photoCode") String photoCode) {

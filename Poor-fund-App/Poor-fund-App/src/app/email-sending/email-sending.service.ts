@@ -12,12 +12,12 @@ export class EmailSendingService {
   sendingEmail(email: Email){
     
           if (email.id) {
-            return this.httpClient.put(`http://localhost:8081/updateEmail/${email.id}`, email)
+            return this.httpClient.put(`/updateEmail/${email.id}`, email)
             .pipe(catchError(this.handleError));
             
           } else {
             
-            return this.httpClient.post(`http://localhost:8081/emailSending`, email)
+            return this.httpClient.post(`/emailSending`, email)
             .pipe(catchError(this.handleError));
           }
 
@@ -25,17 +25,17 @@ export class EmailSendingService {
 //-------------------------------------------------------------------------------------
 
   getEmails(){
-    return this.httpClient.get<Email[]>(`http://localhost:8081/gettingEmails`);
+    return this.httpClient.get<Email[]>(`/gettingEmails`);
   }
 //-------------------------------------------------------------------------------------
 
   getEmail(id: string){
-    return this.httpClient.get<Email>(`http://localhost:8081/gettingEmail/${id}`);
+    return this.httpClient.get<Email>(`/gettingEmail/${id}`);
   }
 //-------------------------------------------------------------------------------------
 
   deleteEmail(id: string){
-    return this.httpClient.delete(`http://localhost:8081/deleteById/${id}`);
+    return this.httpClient.delete(`/deleteById/${id}`);
   }
 //-------------------------------------------------------------------------------------
 
