@@ -45,7 +45,7 @@ public class Manage_Grant_Controller {
 				if (consumers != null) {
 					this.prFileCode = consumers.getPrCode();
 					this.file = new File(
-							"/root/student-fund-images/"
+							"/home/atif/SFimages/"
 									+ this.prFileCode + ".jpg");
 					this.file.delete();
 					LOGGER.info("From class Manage_Grant_Not_Grant_Controller ,method : addGrant()---File : "

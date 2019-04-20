@@ -25,7 +25,7 @@ import com.renu.server.repositories.StaffRepository;
 @RestController
 public class StaffController {
 	private static final Logger LOGGER = LoggerFactory.getLogger(StaffController.class);
-	private static final String ABS_PATH_FOR_DEVELOPERS_IMAGES = "/root/poor-fund-images/";
+	private static final String ABS_PATH_FOR_DEVELOPERS_IMAGES = "/home/atif/SFimages/";
 	@Autowired
 	StaffRepository staffRepository;
 	private String sCode = null;

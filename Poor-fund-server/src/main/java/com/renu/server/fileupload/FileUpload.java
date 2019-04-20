@@ -12,18 +12,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class FileUpload {
-
-	private static final Path ABS_PATH = Paths
-			.get("/root/student-fund-images/");
+	private static final Path ABS_PATH = Paths.get("/home/atif/SFimages/");
 	
 	private static final Path ABS_PATH_FOR_GRANTED_NOT_GRANTED = Paths
-			.get("/root/student-fund-images/");
+			.get("/home/atif/SFimages/");
 	private static final Path ABS_PATH_FOR_STAFF_IMAGES = Paths
-			.get("/root/student-fund-images/");
+			.get("/home/atif/SFimages/");
 	private static final Logger LOGGER = LoggerFactory.getLogger(FileUpload.class);
 
 	public static void fileUpload(MultipartFile piFile, String piCode, MultipartFile apiFile, String apiCode) {
-
 		LOGGER.info("FROM piFileUpload method");
          if (!(piCode.equals(null)&&apiCode.equals(null))) {
 			
