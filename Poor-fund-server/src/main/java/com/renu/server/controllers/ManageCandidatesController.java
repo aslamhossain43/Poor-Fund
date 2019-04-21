@@ -22,8 +22,8 @@ import com.renu.server.repositories.CustomersRepository;
 @RestController
 public class ManageCandidatesController {
 private static final Logger LOGGER=LoggerFactory.getLogger(ManageCandidatesController.class);
-private static final String ABS_PATH ="/home/atif/SFimages/"; 
-private static final String ABS_PATH_FOR_GRANTED_NOT_GRANTED = "/home/atif/SFimages/";
+private static final String ABS_PATH ="/home/atif/SFimages"; 
+private static final String ABS_PATH_FOR_GRANTED_NOT_GRANTED = "/home/atif/SFimages";
 
 @Autowired
 CustomersRepository consumersRepository;

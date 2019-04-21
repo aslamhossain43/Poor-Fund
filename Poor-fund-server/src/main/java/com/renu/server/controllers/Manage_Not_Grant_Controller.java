@@ -32,7 +32,7 @@ public class Manage_Not_Grant_Controller {
 
 		Consumers consumers = consumersRepository.getById(notGrantId);
 		this.provedCode = consumers.getPrCode();
-		this.file = new File("/home/atif/SFimages/"
+		this.file = new File("/home/atif/SFimages"
 				+ this.provedCode + ".jpg");
 		this.file.delete();
 		if (status.equals("NULL")) {

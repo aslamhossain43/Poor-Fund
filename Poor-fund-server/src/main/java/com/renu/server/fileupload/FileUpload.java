@@ -12,12 +12,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class FileUpload {
-	private static final Path ABS_PATH = Paths.get("/home/atif/SFimages/");
+	private static final Path ABS_PATH = Paths.get("/home/atif/SFimages");
 	
 	private static final Path ABS_PATH_FOR_GRANTED_NOT_GRANTED = Paths
-			.get("/home/atif/SFimages/");
+			.get("/home/atif/SFimages");
 	private static final Path ABS_PATH_FOR_STAFF_IMAGES = Paths
-			.get("/home/atif/SFimages/");
+			.get("/home/atif/SFimages");
 	private static final Logger LOGGER = LoggerFactory.getLogger(FileUpload.class);
 
 	public static void fileUpload(MultipartFile piFile, String piCode, MultipartFile apiFile, String apiCode) {
@@ -29,7 +29,7 @@ public class FileUpload {
 			Files.copy(apiFile.getInputStream(), ABS_PATH.resolve(apiCode + ".jpg"));
 
 		} catch (Exception e) {
-			throw new RuntimeException("FAIL!");
+			throw new RuntimeException(e);
 		}
          }else {
         	 LOGGER.info("FROM piFileUpload method, piCode or apiCode is null");
