@@ -46,6 +46,7 @@ addNotGrant() {
     this.notGrant.notGrantId)
     .subscribe(response => {
       if (response.statusText === 'OK') {
+        this.getAllCandidates();
         alert('Your operation has been completed successfully !');
         this.msg = '';
       }

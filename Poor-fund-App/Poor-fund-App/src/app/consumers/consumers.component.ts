@@ -146,6 +146,7 @@ getConsumers(): void {
     this.consumerService.addConsumers(this.consumer)
       .subscribe(response => {
         if (response.statusText === 'OK') {
+          this.getConsumers();
           alert('Your operation has been completed successfully !');
           this.reset();
           this.msg = 'offProgressBar';

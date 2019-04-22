@@ -63,6 +63,7 @@ export class ManageStaffComponent implements OnInit {
       , this.staff.details, this.staff.id, this.staff.createdDate)
       .subscribe(response => {
         if (response.statusText === 'OK') {
+          this.getAllStaff();
           alert('Your operation has been completed successfully !');
           this.msg = '';
         }
