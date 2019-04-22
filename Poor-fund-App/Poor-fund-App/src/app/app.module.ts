@@ -65,6 +65,7 @@ import { StaffDirectoryService } from './staff-directory/staff-directory.service
 import { EmailSendingComponent } from './email-sending/email-sending.component';
 import { EmailSendingService } from './email-sending/email-sending.service';
 import { MatPaginatorModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [
     AppComponent,
@@ -115,13 +116,15 @@ import { MatPaginatorModule } from '@angular/material';
     // FOR REACTIVE FORM MODULE
     ReactiveFormsModule,
     // FOR NGX BOOTSTRAP MODULE
-     NgxBootstrapModule
+     NgxBootstrapModule,
+     // FOR MENU
+     FlexLayoutModule
   ],
   providers: [AuthGuard, AngularFireAuth, UploadFileService, ConsumerService, ManageGrantedService, GrantedListService, NotGrantedListService, ManageNotGrantedListService,
 DonorService, TotalDonorService, LastYaerTotalDonorService, CurrentYaerTotalDonorService,
 LastYearGrantedListService, CurrentYearGrantedListService, LastYearNotGrantedListService
 , CurrentYearNotGrantedListService, ManageCandidatesService, ManageDonorService, ManageStaffService,
-StaffDirectoryService,EmailSendingService,
+StaffDirectoryService,EmailSendingService,NavComponent,
 // For Modal
 BsModalService],
   bootstrap: [AppComponent]

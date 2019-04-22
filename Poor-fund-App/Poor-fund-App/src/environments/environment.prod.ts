@@ -2,11 +2,11 @@ export const environment = {
   production: true,
   firebase: {
 
-    apiKey: 'AIzaSyBJ7BUJ1O0xNUD2_-gsXsgQZBn433P0efM',
-    authDomain: 'o2-auth-fb-service-demo.firebaseapp.com',
-    databaseURL: 'https://o2-auth-fb-service-demo.firebaseio.com',
-    projectId: 'o2-auth-fb-service-demo',
-    storageBucket: 'o2-auth-fb-service-demo.appspot.com',
-    messagingSenderId: '425204054081'
+    apiKey: "AIzaSyCywQnS6kN6Uu8QP1nq8cFB_9rS5yiy2Rs",
+    authDomain: "students-fund.firebaseapp.com",
+    databaseURL: "https://students-fund.firebaseio.com",
+    projectId: "students-fund",
+    storageBucket: "students-fund.appspot.com",
+    messagingSenderId: "900153301043"
  }
 };

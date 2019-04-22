@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import {fromBottom } from '../router.animations';
 import { auth as authen } from 'firebase';
+import { NavComponent } from '../nav/nav.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,7 +13,7 @@ import { auth as authen } from 'firebase';
 export class LoginComponent implements OnInit {
 
   error: any;
-  constructor(public af: AngularFireAuth, private router: Router) {
+  constructor(public af: AngularFireAuth, private router: Router,private navComponent: NavComponent) {
 
     this.af.authState.subscribe(auth => {
       if (auth) {
@@ -27,6 +28,7 @@ export class LoginComponent implements OnInit {
   loginFb() {
     this.af.auth.signInWithPopup(new authen.FacebookAuthProvider()).then(
       (success) => {
+        this.navComponent.loginProperties();
         this.router.navigate(['/home']);
       }).catch(
         (err) => {
@@ -37,6 +39,7 @@ export class LoginComponent implements OnInit {
   loginGoogle() {
     this.af.auth.signInWithPopup(new authen.GoogleAuthProvider()).then(
       (success) => {
+        this.navComponent.loginProperties();
         this.router.navigate(['/home']);
       }).catch(
         (err) => {

@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, Inject, ElementRef, ViewChild } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Router } from '@angular/router';
 @Component({
@@ -7,24 +7,34 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
-uidDataBase = '1lF136L2aegcwAE2LLbJwPZvH2S2';
-emailuid0043 = 'cBc5uZZxcmVurWewTGru2aiLObg1';
-uid: string;
+
+  uidDataBase = 'bHVaZBMwjqg4UO6RtfQ9rj8RLXK2';
+  emailuid0043 = '9Yqsz4wHXeTEQaU3RTV2ZjpYQMm2';
+  uid: string;
   authenticatedName: any;
   photoUrl: string;
   constructor(public af: AngularFireAuth, private router: Router) {
-    this.af.authState.subscribe(auth => {
-      if (!auth.displayName) {
-        this.authenticatedName = auth.email;
-      } else {
-        this.authenticatedName = auth.displayName;
-      }
-      this.photoUrl = auth.photoURL;
-      this.uid = auth.uid;
-      console.log('uid: '+auth.uid);
-    });
+    this.loginProperties();
 
   }
+
+  loginProperties() {
+    this.af.authState.subscribe(auth => {
+      if (auth !== null) {
+        if (!auth.displayName) {
+          this.authenticatedName = auth.email;
+        } else {
+          this.authenticatedName = auth.displayName;
+        }
+        this.photoUrl = auth.photoURL;
+        this.uid = auth.uid;
+        console.log('uid: ' + auth.uid);
+      }
+    });
+  }
+
+
+
   // FOR NAV COLLAPSE
   isCollapsed = true;
   // LOGOUT
@@ -35,7 +45,13 @@ uid: string;
     this.router.navigateByUrl('/login');
   }
   ngOnInit() {
-    console.log(this.uid);
   }
 
+
+
 }
+
+
+
+
+
